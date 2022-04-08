@@ -60,7 +60,7 @@ def writeFiles():
 	return 3
 	
 def moveFile():
-	path = "loggedCalls_aka_old_logs/"
+	path = "loggedCalls/"
 	for file in list_of_files:
 		os.rename(file,path+file)
 	return 4
