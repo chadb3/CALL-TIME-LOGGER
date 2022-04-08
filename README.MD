@@ -3,9 +3,6 @@ I wrote this to log the times I get calls.
 
 Once the times are logged you can compute when it is likely to be the busiest
 
-**Note: there should also be a directory called "loggedCalls_aka_old_logs". It wasn't included with the upload as it was empty**
-**you will need to generate a directory with the above name until I implement a fix**
-
 ## Installation
 
 This project does not require running any install scripts and the only requirement is python3
