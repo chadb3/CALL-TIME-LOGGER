@@ -66,8 +66,6 @@ I might update it to be customizable, or "dynamic" in the future.
 
 To run click on it or run "py 04callStats.py" or "python3 04callStats.py"
 
-It will not run without processed data.
-
 This computes statistics from the data.
 
 

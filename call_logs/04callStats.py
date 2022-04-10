@@ -31,7 +31,7 @@ for info2 in new_info:
 print("\n\nNumber of Shifts (with calls): {}\n\n".format(shift_count))
 print("\n\nComputing Call Total, Averages, Median, and Mode\n\n")
 print("TOTAL CALLS: {}".format(call_count))
-print("\nAverage Calls per shift: {0:.3f}\n\n".format(call_count/shift_count))
+print("\nAverage Calls per shift: {0:.3f}\n\n".format(call_count/max(shift_count,1)))
 #print("\n\nComputing Call Median\n\n")
 #print("{}".format(call_list))
 #print([index for index, value in enumerate(call_list) if value == 1])
@@ -51,6 +51,8 @@ for i in range(lenList):
         #print(list_of_totals_for_median)
 #print(list_of_totals_for_median)
 sortedList = list_of_totals_for_median[:] #need to do this so that it makes it by value, and so that the sort below does not sort this list to match dates to calls counts.
+if(len(sortedList)==0):
+	sortedList.append(0)
 sortedList.sort()
 #print(list_of_totals_for_median)
 #doing math to figure out mode
