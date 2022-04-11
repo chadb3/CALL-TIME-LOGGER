@@ -60,7 +60,7 @@ sortedList.sort()
 #compute the counts of each value
 #find the most common one. 
 #MEDIAN START HERE-----------------------------------------------------------------------------------------------------------------------------
-mode_val = sortedList[0]
+mode_val = 0
 count_k = 0
 
 for i in sortedList:
