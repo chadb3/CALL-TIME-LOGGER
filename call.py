@@ -236,7 +236,6 @@ def removeCall(callNumber_2_remove):
 	global listOfCalls
 	global callCount
 	actualIndex = int(callNumber_2_remove) - 1
-	print(f"Call Count: {callCount}\n A Index: {actualIndex}")
 	if(callCount >= 1 and actualIndex >= 0 and actualIndex < callCount):
 		del listOfCalls[actualIndex]
 		callCount = callCount - 1
