@@ -35,7 +35,7 @@ c1 = randint(0,551)
 commandYes = ["*Commands to log a new call*", "\t1. Yes", "\t2. Y"]
 commandQuit = ["*Commands to quit the program*","\t1. Exit", "\t2. Quit"]
 commandLogging = ["*Commands to manually write to file*","\t1. Write"]
-commandRemove = ["*Commands to remove a call (not yet implemented)*","\t1. Remove", "\t2. RM"]
+commandRemove = ["*Commands to remove a call*","\t1. Remove", "\t2. RM", "\tUse Like: \"rm\" 2 to remove call 2"]
 commandsHelp = ["*Commands dealing with LISTS & HELP*","\t1. List","\t2. Help","\t3. LS", "\t4. Man"]
 commandsPrint = ["*Commands to dealing with output*", "\t1. Print", "\t2. CD (current delta)", "\t3. Boom", "\t4. About", "\t5. Top"]
 commandList = [commandYes,commandQuit,commandLogging,commandRemove,commandsHelp, commandsPrint]
@@ -236,7 +236,8 @@ def removeCall(callNumber_2_remove):
 	global listOfCalls
 	global callCount
 	actualIndex = int(callNumber_2_remove) - 1
-	if(callCount >= 1 and actualIndex >= 0 and actualIndex <= callCount):
+	print(f"Call Count: {callCount}\n A Index: {actualIndex}")
+	if(callCount >= 1 and actualIndex >= 0 and actualIndex < callCount):
 		del listOfCalls[actualIndex]
 		callCount = callCount - 1
 	return False
