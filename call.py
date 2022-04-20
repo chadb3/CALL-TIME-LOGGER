@@ -240,28 +240,35 @@ def removeCall(callNumber_2_remove):
 	global callData
 	global listOfCalls
 	global callCount
+	#holds a list of call numbers. Ultimately not used, as I use an index to renumber anyway. Requires 2 splits. 
 	callNumStrLst=[]
+	#holds a list of call times split out of the original. requires 2 splits. 
 	timeStrLst=[]
+	#holds the list of dates split out from the original. Requires 2 splits.
 	dateStrLst=[]
+	#holds a list of deltas split out of the original. Requires 3 splits and a strip() to properly format....
 	deltaStrLst=[]
+	#this will house the updated list before making the old list = this one.
+	tempListOfCalls=[]
 	actualIndex = int(callNumber_2_remove) - 1
 	if(callCount >= 1 and actualIndex >= 0 and actualIndex < callCount):
 		del listOfCalls[actualIndex]
 		callCount = callCount - 1
 		#I'll do it this way for now until I can find a better way...
-		##for i in listOfCalls:
+		for i in listOfCalls:
 			#separates out the call to renumber 
-			##callNumStrLstStrLst.append(i.strip().split("\t")[0].split(": ")[1])
+			callNumStrLst.append(i.strip().split("\t")[0].split(": ")[1])
 			#time string list
-			##timeStrLst.append(i.strip().split("\t")[1].split(": ")[1])
+			timeStrLst.append(i.strip().split("\t")[1].split(": ")[1])
 			#date time list
-			##dateStrLst.append(i.strip().split("\t")[2].split(": ")[1])
+			dateStrLst.append(i.strip().split("\t")[2].split(": ")[1])
 			#delta list
-			##deltaStrLst.append(i.strip().split("\t")[3].split(": ")[1])
-	##print(callNumStrLst)
-	##print(timeStrLst)
-	##print(dateStrLst)
-	##print(deltaStrLst)
+			deltaStrLst.append(i.strip().split("\t")[3].split(": ")[1].split("(H:")[0].strip())
+		for i in range(0,len(callNumStrLst)):
+			tempListOfCalls.append(callText.format(i+1,timeStrLst[i],dateStrLst[i],deltaStrLst[i]))
+	#updates the list of calls without the removed call, now no need to manually renumber.
+	listOfCalls = tempListOfCalls
+	print("\n\tRemoved call {} successfully (before renumber)\n".format(callNumber_2_remove)) 
 	return False
 	#do something 
 
@@ -322,8 +329,7 @@ def main():
 		if(str_lower[0:2] == "rm"):
 			a=str_lower.split()
 			if(len(a)>1):
-				if(type(a[1])==type(1)):
-					removeCall(a[1])
+				removeCall(a[1])
 
 			
 
