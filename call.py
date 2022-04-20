@@ -249,19 +249,19 @@ def removeCall(callNumber_2_remove):
 		del listOfCalls[actualIndex]
 		callCount = callCount - 1
 		#I'll do it this way for now until I can find a better way...
-		#for i in listOfCalls:
+		for i in listOfCalls:
 			#separates out the call to renumber 
-			##callNumStrLstStrLst.append(i.strip().split("\t")[0].split(": ")[1])
+			callNumStrLstStrLst.append(i.strip().split("\t")[0].split(": ")[1])
 			#time string list
-			##timeStrLst.append(i.strip().split("\t")[1].split(": ")[1])
+			timeStrLst.append(i.strip().split("\t")[1].split(": ")[1])
 			#date time list
-			##dateStrLst.append(i.strip().split("\t")[2].split(": ")[1])
+			dateStrLst.append(i.strip().split("\t")[2].split(": ")[1])
 			#delta list
-			##deltaStrLst.append(i.strip().split("\t")[3].split(": ")[1])
-	##print(callNumStrLst)
-	##print(timeStrLst)
-	##print(dateStrLst)
-	##print(deltaStrLst)
+			deltaStrLst.append(i.strip().split("\t")[3].split(": ")[1])
+	print(callNumStrLst)
+	print(timeStrLst)
+	print(dateStrLst)
+	print(deltaStrLst)
 	return False
 	#do something 
 
