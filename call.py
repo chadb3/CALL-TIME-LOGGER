@@ -50,6 +50,8 @@ callCount=0
 cumulativeCallCount = 0
 #***********************************
 
+callData = []
+
 callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
 
 callDate = ""
@@ -175,6 +177,7 @@ def writeFile(arrIn, fileName):
 # I also clear callDate, and callTime for some reason.(?)
 def newCall():
 	#increase call count
+	global callData
 	global callCount
 	global listOfCalls
 	global time_current_call
@@ -233,12 +236,32 @@ def printToConsole():
 	#Somebody do something
 	
 def removeCall(callNumber_2_remove):
+	#callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
+	global callData
 	global listOfCalls
 	global callCount
+	callNumStrLst=[]
+	timeStrLst=[]
+	dateStrLst=[]
+	deltaStrLst=[]
 	actualIndex = int(callNumber_2_remove) - 1
 	if(callCount >= 1 and actualIndex >= 0 and actualIndex < callCount):
 		del listOfCalls[actualIndex]
 		callCount = callCount - 1
+		#I'll do it this way for now until I can find a better way...
+		#for i in listOfCalls:
+			#separates out the call to renumber 
+			##callNumStrLstStrLst.append(i.strip().split("\t")[0].split(": ")[1])
+			#time string list
+			##timeStrLst.append(i.strip().split("\t")[1].split(": ")[1])
+			#date time list
+			##dateStrLst.append(i.strip().split("\t")[2].split(": ")[1])
+			#delta list
+			##deltaStrLst.append(i.strip().split("\t")[3].split(": ")[1])
+	##print(callNumStrLst)
+	##print(timeStrLst)
+	##print(dateStrLst)
+	##print(deltaStrLst)
 	return False
 	#do something 
 
@@ -298,7 +321,9 @@ def main():
 			printTop()
 		if(str_lower[0:2] == "rm"):
 			a=str_lower.split()
-			removeCall(a[1])
+			if(len(a)>1):
+				if(type(a[1])==type(1)):
+					removeCall(a[1])
 
 			
 
