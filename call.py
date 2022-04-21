@@ -50,7 +50,6 @@ callCount=0
 cumulativeCallCount = 0
 #***********************************
 
-callData = []
 
 callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
 
@@ -70,6 +69,7 @@ time_delta = 0
 
 username = ""
 
+epcCalled = False
 
 # Generate files if they don't already exists
 # the log file 
@@ -109,7 +109,7 @@ def currentDelta():
 	#a = current "call" If I were to get another call... a represents the time if I were to get a call at the point of calling the function. the previous call is already saved in time_current_call, and time_previous_call is more of a temp storage...
 	a = time()
 	# time of the current call is actually the time of the previous one ... it would actually make more since to put b above a..., but in this context it doesn't matter much. Just confusing if you are trying to follow it...
-	b = time_current_call
+	b = time_previous_call
 	c = a - b
 	#if b == 0 then there wasn't a previous call... (aka no calls at all)
 	if(b==0):
@@ -177,12 +177,12 @@ def writeFile(arrIn, fileName):
 # I also clear callDate, and callTime for some reason.(?)
 def newCall():
 	#increase call count
-	global callData
 	global callCount
 	global listOfCalls
 	global time_current_call
 	global time_previous_call
 	global time_delta
+	global epcCalled
 	callCount+=1
 	#sets the time for the first call (only to be used once the second call happens)
 	if(callCount==1):
@@ -190,14 +190,17 @@ def newCall():
 	
 	#setting up the values for the delta
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
-	if(callCount>1):
+	elif(callCount>1 and epcCalled == False):
 		time_previous_call = time_current_call
 		time_current_call = time()
 		#compute time delta
 		time_delta = time_current_call - time_previous_call
+	else:
+		time_current_call = time()
+		time_delta = time_current_call - time_previous_call
 		
 		
-		
+#need debug strings in above i am still getting odd behavior when testing "calls" where i did not get a chance to epc it. the epc doesn't match the cd (current  delta).		
 	
 	
 	#set up the call time
@@ -220,6 +223,7 @@ def newCall():
 	#sets the call and date back to "" not sure if needed, but it makes me feel better
 	callDate = ""
 	callTime = ""
+	epcCalled = False
 	return True
 	
 	
@@ -237,7 +241,6 @@ def printToConsole():
 	
 def removeCall(callNumber_2_remove):
 	#callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
-	global callData
 	global listOfCalls
 	global callCount
 	#holds a list of call numbers. Ultimately not used, as I use an index to renumber anyway. Requires 2 splits. 
@@ -271,6 +274,13 @@ def removeCall(callNumber_2_remove):
 	print("\n\tRemoved call {} successfully (before renumber)\n".format(callNumber_2_remove)) 
 	return False
 	#do something 
+
+def epc():
+	global time_previous_call
+	global epcCalled
+	time_previous_call = time()
+	epcCalled = True
+
 
 
 #main entry point to the script
@@ -334,6 +344,7 @@ def main():
 				removeCall(a[1])
 		if(str_lower[0:3] == "epc"):
 			print("end previous call")
+			epc()
 
 			
 
@@ -350,7 +361,3 @@ if __name__ == "__main__":
 # make a container for the CALLS
 	#This will be for removing calls such that I can easily renumber the calls
 	#This will also allow for "other modifications" more easily.
-
-
-
-
