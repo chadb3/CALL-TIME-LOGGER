@@ -299,11 +299,11 @@ def main():
 				
 		if(str_lower=='exit' or str_lower=='quit'):
 			if(c1 % 100 == 0):
-				#Easter Egg  Exit :^)
+				# Easter Egg  Exit :^)
 				print("\n*** HAS A GOOD DAY :^) ***\n")
 				sleep(5)
 			else:
-				#"Normal" Exit
+				# "Normal" Exit
 				print("\n*** HAVE A GOOD DAY :) ***\n")
 				sleep(2.5)
 			break
@@ -332,6 +332,8 @@ def main():
 			a=str_lower.split()
 			if(len(a)>1):
 				removeCall(a[1])
+		if(str_lower[0:3] == "epc"):
+			print("end previous call")
 
 			
 
