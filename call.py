@@ -120,7 +120,7 @@ def currentDelta():
 		print("\n\t* Current Delta: {} (H:mm:ss) *\n".format(time_sub_string))
 	
 	return True
-
+	# This is where the weried behavior is not newCall()
 
 
 #logs the total calls
@@ -192,6 +192,7 @@ def newCall():
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
 	elif(callCount>1 and epcCalled == False):
 		time_previous_call = time_current_call
+		print("elif hit")
 		time_current_call = time()
 		#compute time delta
 		time_delta = time_current_call - time_previous_call
@@ -201,7 +202,7 @@ def newCall():
 		
 		
 #need debug strings in above i am still getting odd behavior when testing "calls" where i did not get a chance to epc it. the epc doesn't match the cd (current  delta).		
-	
+#Above is incorrect. This appears to work fine. The bug is in currentDelta  	
 	
 	#set up the call time
 	callTime = strftime("%X")
