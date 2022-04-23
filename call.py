@@ -69,7 +69,7 @@ time_delta = 0
 
 username = ""
 
-epcCalled = False
+eccCalled = False
 
 # Generate files if they don't already exists
 # the log file 
@@ -184,7 +184,7 @@ def newCall():
 	global time_current_call
 	global time_previous_call
 	global time_delta
-	global epcCalled
+	global eccCalled
 	callCount+=1
 	#sets the time for the first call (only to be used once the second call happens)
 	if(callCount==1):
@@ -192,7 +192,7 @@ def newCall():
 	
 	#setting up the values for the delta
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
-	elif(callCount>1 and epcCalled == False):
+	elif(callCount>1 and eccCalled == False):
 		time_previous_call = time_current_call
 	#	print("elif hit")
 		time_current_call = time()
@@ -227,7 +227,7 @@ def newCall():
 	#sets the call and date back to "" not sure if needed, but it makes me feel better
 	callDate = ""
 	callTime = ""
-	epcCalled = False
+	eccCalled = False
 	return True
 	
 	
@@ -279,15 +279,18 @@ def removeCall(callNumber_2_remove):
 	return False
 	#do something 
 
-def epc():
+# Function to end the "current call"
+# this causes the time from last call to be more accurate
+# Even though I don't use it for anything. 
+def ecc():
 	global time_current_call
 	global time_previous_call
-	global epcCalled
-	if(callCount >=1 and epcCalled == False):
+	global eccCalled
+	if(callCount >=1 and eccCalled == False):
 		print("*** Ended Call ***")
 		time_previous_call = time()
 		time_current_call = time()
-		epcCalled = True
+		eccCalled = True
 	else:
 		print("no call to end...")
 
@@ -352,8 +355,8 @@ def main():
 			a=str_lower.split()
 			if(len(a)>1):
 				removeCall(a[1])
-		if(str_lower[0:3] == "epc"):
-			epc()
+		if(str_lower[0:3] == "ecc"):
+			ecc()
 
 			
 
