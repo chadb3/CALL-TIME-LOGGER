@@ -109,7 +109,9 @@ def currentDelta():
 	#a = current "call" If I were to get another call... a represents the time if I were to get a call at the point of calling the function. the previous call is already saved in time_current_call, and time_previous_call is more of a temp storage...
 	a = time()
 	# time of the current call is actually the time of the previous one ... it would actually make more since to put b above a..., but in this context it doesn't matter much. Just confusing if you are trying to follow it...
-	b = time_previous_call
+	#b = time_previous_call
+	b = time_current_call
+	#print(str(timedelta(seconds=b))[:7])
 	c = a - b
 	#if b == 0 then there wasn't a previous call... (aka no calls at all)
 	if(b==0):
@@ -192,11 +194,12 @@ def newCall():
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
 	elif(callCount>1 and epcCalled == False):
 		time_previous_call = time_current_call
-		print("elif hit")
+	#	print("elif hit")
 		time_current_call = time()
 		#compute time delta
 		time_delta = time_current_call - time_previous_call
 	else:
+		#print("else hit")
 		time_current_call = time()
 		time_delta = time_current_call - time_previous_call
 		
@@ -277,10 +280,16 @@ def removeCall(callNumber_2_remove):
 	#do something 
 
 def epc():
+	global time_current_call
 	global time_previous_call
 	global epcCalled
-	time_previous_call = time()
-	epcCalled = True
+	if(callCount >=1 and epcCalled == False):
+		print("*** Ended Call ***")
+		time_previous_call = time()
+		time_current_call = time()
+		epcCalled = True
+	else:
+		print("no call to end...")
 
 
 
@@ -344,7 +353,6 @@ def main():
 			if(len(a)>1):
 				removeCall(a[1])
 		if(str_lower[0:3] == "epc"):
-			print("end previous call")
 			epc()
 
 			
