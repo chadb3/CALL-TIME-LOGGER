@@ -28,6 +28,8 @@ You will likely see a reference to a "log file" this is for an unused feature th
 
 To log the call time simply type: "y" and hit the enter, or the return key. You must do this manually each time. Each log will rewrite to the file.
 
+to can end a call with the "ecc" or "epc" command
+
 To properly exit, type "exit", and press enter or the return key. If you did not type "write", and didn't log any times, it will not create a file.
 
 
