@@ -355,7 +355,7 @@ def main():
 			a=str_lower.split()
 			if(len(a)>1):
 				removeCall(a[1])
-		if(str_lower[0:3] == "ecc"):
+		if(str_lower[0:3] == "ecc" or str_lower[0:3] == "epc"):
 			ecc()
 
 			
