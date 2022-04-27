@@ -287,10 +287,11 @@ def ecc():
 	global time_previous_call
 	global eccCalled
 	if(callCount >=1 and eccCalled == False):
-		print("*** Ended Call ***")
-		time_previous_call = time()
-		time_current_call = time()
-		eccCalled = True
+	    print("\n*** Ended Call ***")
+	    time_previous_call = time()
+	    print("Call Duration: {}\n".format(str(timedelta(seconds=time_previous_call-time_current_call))[:7]))
+	    time_current_call = time()
+	    eccCalled = True
 	else:
 		print("no call to end...")
 

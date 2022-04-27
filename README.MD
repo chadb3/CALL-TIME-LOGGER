@@ -6,7 +6,7 @@ Once the times are logged you can compute when it is likely to be the busiest
 ## Installation
 
 This project does not currently require running any install scripts and the only requirement is python3
-simply run it by clicking on it, or "py call.py" or "python3 call.py"
+simply run it by clicking on it, or "py call.py" or "python3 call.py" ("python call.py" might work on newer linux distros)
 
 ## How to use call.py
 
