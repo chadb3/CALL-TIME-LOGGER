@@ -247,8 +247,6 @@ def removeCall(callNumber_2_remove):
 	#callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
 	global listOfCalls
 	global callCount
-	#local bool to determin if value changed or not
-	localBool = False
 	#holds a list of call numbers. Ultimately not used, as I use an index to renumber anyway. Requires 2 splits. 
 	callNumStrLst=[]
 	#holds a list of call times split out of the original. requires 2 splits. 
@@ -259,8 +257,6 @@ def removeCall(callNumber_2_remove):
 	deltaStrLst=[]
 	#this will house the updated list before making the old list = this one.
 	tempListOfCalls=[]
-	global time_current_call
-	global time_previous_call
 	actualIndex = int(callNumber_2_remove) - 1
 	if(callCount >= 1 and actualIndex >= 0 and actualIndex < callCount):
 		del listOfCalls[actualIndex]
@@ -277,16 +273,9 @@ def removeCall(callNumber_2_remove):
 			deltaStrLst.append(i.strip().split("\t")[3].split(": ")[1].split("(H:")[0].strip())
 		for i in range(0,len(callNumStrLst)):
 			tempListOfCalls.append(callText.format(i+1,timeStrLst[i],dateStrLst[i],deltaStrLst[i]))
-		localBool = True
-	if(localBool):
-		#updates the list of calls without the removed call, now no need to manually renumber.
-		listOfCalls = tempListOfCalls
-		print("\n\tRemoved call {} successfully (before renumber)\n".format(callNumber_2_remove))
-		localBool = False
-		time_current_call = time()
-		time_previous_call = time()
-	else:
-		print("\n\tCall {} NOT FOUND\n".format(callNumber_2_remove)) 
+	#updates the list of calls without the removed call, now no need to manually renumber.
+        OPlistOfCalls = tempListOfCalls
+	print("\n\tRemoved call {} successfully (before renumber)\n".format(callNumber_2_remove)) 
 	return False
 	#do something 
 
