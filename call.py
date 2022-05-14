@@ -319,12 +319,16 @@ def main():
 	print("*******************************************************************************************")
 	print("***************************** TYPE HELP FOR COMMAND LIST **********************************")
 	print("*******************************************************************************************\n\n")
-	while True:
-		str_val=input("Call Logger> ")
+	call_str_1 = "Call Logger> "
+	call_str_2 = "Call {}> "
+	call_str_current = call_str_1
+	while True:	
+		str_val=input(call_str_current)
 		str_lower = str_val.lower()
 		#print(str_lower)
 		if(str_lower=='y' or str_lower == 'yes' or str_lower == '(y)' or str_lower == '(y)es'): # or str_lower == ''
 			newCall()
+			call_str_current = call_str_2.format(callCount)
 			printToConsole()
 			writeFile(listOfCalls, fileName)
 		if(str_lower=='write'):
@@ -367,8 +371,11 @@ def main():
 			a=str_lower.split()
 			if(len(a)>1):
 				removeCall(a[1])
+				if(call_str_current!=call_str_1):
+					call_str_current = call_str_2.format(callCount)
 		if(str_lower[0:3] == "ecc" or str_lower[0:3] == "epc"):
 			ecc()
+			call_str_current = call_str_1
 
 			
 
