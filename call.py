@@ -372,7 +372,8 @@ def main():
 			if(len(a)>1):
 				removeCall(a[1])
 				if(call_str_current!=call_str_1):
-					if(callCount-1!=0):
+					if(callCount-1!=-1):
+						print(callCount)
 						call_str_current = call_str_2.format(callCount)
 					else:
 						call_str_current = call_str_1
