@@ -372,7 +372,10 @@ def main():
 			if(len(a)>1):
 				removeCall(a[1])
 				if(call_str_current!=call_str_1):
-					call_str_current = call_str_2.format(callCount)
+					if(callCount-1!=0):
+						call_str_current = call_str_2.format(callCount)
+					else:
+						call_str_current = call_str_1
 		if(str_lower[0:3] == "ecc" or str_lower[0:3] == "epc"):
 			ecc()
 			call_str_current = call_str_1
