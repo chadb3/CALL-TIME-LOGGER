@@ -396,8 +396,8 @@ def main():
 			call_str_current = call_str_1
 			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
 		else:
-			print("else hit")
-			print(str_val)
+			#print("else hit")
+			#print(str_val)
 			logStats("[ "+str(datetime.now())+" ]  "+call_str_current+str_val)
 
 			
