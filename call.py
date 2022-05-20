@@ -1,5 +1,5 @@
 from time import *
-from datetime import timedelta
+from datetime import timedelta, datetime
 from random import randint
 
 def pirntAbout():
@@ -74,7 +74,8 @@ eccCalled = False
 # Generate files if they don't already exists
 # the log file 
 def genFiles():
-	logFileName = "0callStats.txt"
+	#logFileName = "0callStats.txt"
+	logFileName = "0callHistory.txt"
 	file_directory = "./call_logs/"	
 	FFF = file_directory + logFileName
 	try:
@@ -126,18 +127,22 @@ def currentDelta():
 
 
 #logs the total calls
-def logStats():
+def logStats(txtIn):
 	file_directory = "./call_logs/"
-	logFileName = "0callStats.txt"
+	#logFileName = "0callStats.txt"
+	logFileName = "0callHistory.txt"
 	fullPath = file_directory+logFileName
-	fileWriter = open(fullPath,'w')
+	fileWriter = open(fullPath,'a')
+	fileWriter.write(txtIn+"\n")
+	fileWriter.close()
 	return 1
 
 # Gets the running call total
 def getStats():
 	global cumulativeCallCount
 	file_directory = "./call_logs/"
-	logFileName = "0callStats.txt"
+	#logFileName = "0callStats.txt"
+	logFileName = "0callHistory.txt"
 	fullPath = file_directory+logFileName
 	fileReader = open(fullPath,'r')
 	z=fileReader.readline()
@@ -327,16 +332,19 @@ def main():
 		str_lower = str_val.lower()
 		#print(str_lower)
 		if(str_lower=='y' or str_lower == 'yes' or str_lower == '(y)' or str_lower == '(y)es'): # or str_lower == ''
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			newCall()
 			call_str_current = call_str_2.format(callCount)
 			printToConsole()
 			writeFile(listOfCalls, fileName)
-		if(str_lower=='write'):
+		elif(str_lower=='write'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			n_bool = writeFile(listOfCalls, fileName)
 			if(n_bool):
 				print("\n\tFile Written Successfully\n")
 				
-		if(str_lower=='exit' or str_lower=='quit'):
+		elif(str_lower=='exit' or str_lower=='quit'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			if(c1 % 100 == 0):
 				# Easter Egg  Exit :^)
 				print("\n*** HAS A GOOD DAY :^) ***\n")
@@ -346,29 +354,36 @@ def main():
 				print("\n*** HAVE A GOOD DAY :) ***\n")
 				sleep(2.5)
 			break
-		if(str_lower=='help' or str_lower=='list' or str_lower =='ls'):
+		elif(str_lower=='help' or str_lower=='list' or str_lower =='ls'):
 			#print("\n***COMMANDS***\n1. Yes - yes, a log new call\n2. Exit - quits \n3. Quit - quits\n4. Write -writes to file\n5. Help - Help?\n6. Remove - remove call at index (not yet implemented)\n7. rm - remove call at index (not yet implemented)\n8. ls - help?")
 			print(" ")
 			for group in commandList:
 				for item in group:
 					print(item)
 			print(" ")
-		if(str_lower == 'print'):
+		elif(str_lower == 'print'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			printToConsole()
-		if(str_lower == 'cd' or str_lower == 'current delta'):
+		elif(str_lower == 'cd' or str_lower == 'current delta'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			currentDelta()
-		if(str_lower == 'boom'):
+		elif(str_lower == 'boom'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			boom()
-		if(str_lower[0:3] == 'man'):
+		elif(str_lower[0:3] == 'man'):
 			a=str_lower.split()
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			if(a[0]=='man'):
 				manual(str_lower)
-		if(str_lower == "about"):
+		elif(str_lower == "about"):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			pirntAbout()
-		if(str_lower == 'top'):
+		elif(str_lower == 'top'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			printTop()
-		if(str_lower[0:2] == "rm"):
+		elif(str_lower[0:2] == "rm"):
 			a=str_lower.split()
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			if(len(a)>1):
 				removeCall(a[1])
 				if(call_str_current!=call_str_1):
@@ -376,9 +391,14 @@ def main():
 						call_str_current = call_str_2.format(callCount)
 					else:
 						call_str_current = call_str_1
-		if(str_lower[0:3] == "ecc" or str_lower[0:3] == "epc"):
+		elif(str_lower[0:3] == "ecc" or str_lower[0:3] == "epc"):
 			ecc()
 			call_str_current = call_str_1
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
+		else:
+			print("else hit")
+			print(str_val)
+			logStats("[ "+str(datetime.now())+" ]  "+call_str_current+str_val)
 
 			
 
