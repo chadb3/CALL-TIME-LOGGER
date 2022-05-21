@@ -401,7 +401,10 @@ def main():
 		else:
 			#print("else hit")
 			#print(str_val)
-			logStats("[ "+str(datetime.now())+" ]  "+call_str_current+str_val)
+			clean_str_val = " ".join(str_val.split())
+			#print(len(clean_str_val))
+			if(len(clean_str_val)>0):
+				logStats("[ "+str(datetime.now())+" ]  "+call_str_current+clean_str_val)
 
 			
 
