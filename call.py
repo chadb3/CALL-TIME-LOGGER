@@ -324,6 +324,7 @@ def main():
 	print("*******************************************************************************************")
 	print("***************************** TYPE HELP FOR COMMAND LIST **********************************")
 	print("*******************************************************************************************\n\n")
+	logStats("[ "+str(datetime.now())+" ]  "+"SESSION START - "+fileName)
 	call_str_1 = "Call Logger> "
 	call_str_2 = "Call {}> "
 	call_str_current = call_str_1
@@ -348,10 +349,12 @@ def main():
 			if(c1 % 100 == 0):
 				# Easter Egg  Exit :^)
 				print("\n*** HAS A GOOD DAY :^) ***\n")
+				logStats("[ "+str(datetime.now())+" ]  "+"SESSION END - "+"Easter Egg Exit :^)")
 				sleep(5)
 			else:
 				# "Normal" Exit
 				print("\n*** HAVE A GOOD DAY :) ***\n")
+				logStats("[ "+str(datetime.now())+" ]  "+"SESSION END - "+"Normal Exit :)")
 				sleep(2.5)
 			break
 		elif(str_lower=='help' or str_lower=='list' or str_lower =='ls'):
