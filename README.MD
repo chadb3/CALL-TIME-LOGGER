@@ -24,7 +24,7 @@ There are other included python projects need the above format.
 
 The created files will write to the call_logs file.
 
-You will likely see a reference to a "log file" this is for an unused feature that was going to log each line to a separate file for review like this "history" command in Powershell and linux shell (when on a call I would sometimes use my program for note taking, and it would have been helpful to save that info). I never implemented it, and I will likely remove it, and the reference to it here.
+You will likely see a reference to a "log file" this is for a feature that logs each line to a separate file for review like this "history" command in Powershell and linux shell (when on a call I would sometimes use my program for note taking, and it would have been helpful to save that info). You can now review the History file by reviwing "0callHistory.txt" in call_logs. Each line you type (when running call.py) will log to the file as long as it is not just an empty line. 
 
 To log the call time simply type: "y" and hit the enter, or the return key. You must do this manually each time. Each log will rewrite to the file.
 
