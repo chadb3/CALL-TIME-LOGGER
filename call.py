@@ -110,6 +110,7 @@ def currentDelta():
 	# time of the current call is actually the time of the previous one ... it would actually make more since to put b above a..., but in this context it doesn't matter much. Just confusing if you are trying to follow it...
 	b = time_current_call
 	c = a - b
+	#if b == 0 then there wasn't a previous call... (aka no calls at all)
 	if(b==0):
 		print("\n\t*** NO DELTA ***\t\n")
 	else:
