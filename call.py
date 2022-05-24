@@ -74,7 +74,6 @@ eccCalled = False
 # Generate files if they don't already exists
 # the log file 
 def genFiles():
-	#logFileName = "0callStats.txt"
 	logFileName = "0callHistory.txt"
 	file_directory = "./call_logs/"	
 	FFF = file_directory + logFileName
@@ -91,7 +90,6 @@ def genFiles():
 	return True
 
 def manual(strCommandIn):
-	#a = len(strCommandIn)
 	a = strCommandIn.split()
 	if(len(a)==1):
 		print("\n* Type: man <command> *\n")
@@ -110,11 +108,8 @@ def currentDelta():
 	#a = current "call" If I were to get another call... a represents the time if I were to get a call at the point of calling the function. the previous call is already saved in time_current_call, and time_previous_call is more of a temp storage...
 	a = time()
 	# time of the current call is actually the time of the previous one ... it would actually make more since to put b above a..., but in this context it doesn't matter much. Just confusing if you are trying to follow it...
-	#b = time_previous_call
 	b = time_current_call
-	#print(str(timedelta(seconds=b))[:7])
 	c = a - b
-	#if b == 0 then there wasn't a previous call... (aka no calls at all)
 	if(b==0):
 		print("\n\t*** NO DELTA ***\t\n")
 	else:
@@ -123,13 +118,12 @@ def currentDelta():
 		print("\n\t* Current Delta: {} (H:mm:ss) *\n".format(time_sub_string))
 	
 	return True
-	# This is where the weried behavior is not newCall()
+
 
 
 #logs the total calls
 def logStats(txtIn):
 	file_directory = "./call_logs/"
-	#logFileName = "0callStats.txt"
 	logFileName = "0callHistory.txt"
 	fullPath = file_directory+logFileName
 	fileWriter = open(fullPath,'a')
@@ -141,7 +135,6 @@ def logStats(txtIn):
 def getStats():
 	global cumulativeCallCount
 	file_directory = "./call_logs/"
-	#logFileName = "0callStats.txt"
 	logFileName = "0callHistory.txt"
 	fullPath = file_directory+logFileName
 	fileReader = open(fullPath,'r')
@@ -194,17 +187,15 @@ def newCall():
 	#sets the time for the first call (only to be used once the second call happens)
 	if(callCount==1):
 		time_current_call = time()
-	
+		
 	#setting up the values for the delta
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
 	elif(callCount>1 and eccCalled == False):
 		time_previous_call = time_current_call
-	#	print("elif hit")
 		time_current_call = time()
 		#compute time delta
 		time_delta = time_current_call - time_previous_call
 	else:
-		#print("else hit")
 		time_current_call = time()
 		time_delta = time_current_call - time_previous_call
 		
@@ -239,8 +230,6 @@ def newCall():
 	
 #defines how to print to console for viewing pleasure!	
 def printToConsole():
-	#print('\n'*51)
-	#print("*"*100)
 	print("\n")
 	for call in listOfCalls:
 		print(call)
@@ -399,10 +388,7 @@ def main():
 			call_str_current = call_str_1
 			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
 		else:
-			#print("else hit")
-			#print(str_val)
 			clean_str_val = " ".join(str_val.split())
-			#print(len(clean_str_val))
 			if(len(clean_str_val)>0):
 				logStats("[ "+str(datetime.now())+" ]  "+call_str_current+clean_str_val)
 
