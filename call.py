@@ -80,7 +80,7 @@ def genFiles():
 	try:
 		a=open(FFF,'r')
 		a.close()
-		print("Log File Exists")
+		print("\nLog File: \"{}\" Exists\n\t".format(logFileName))
 		return 1
 	except: 
 		a=open(FFF,'w')
@@ -307,10 +307,14 @@ def ecc():
 def main():
 	#do something
 	date_for_file = date.today()
-	fileName = "calls_{}.txt".format(date_for_file.strftime("%m%d%Y"))
-	print("\n\n{}\n\n".format(fileName))
+	fileName = "calls_{}.txt".format(date_for_file.strftime("%m%d%Y"))	
 	#fileName = input("\nEnter file name for logging: ")
-	#print(len(fileName))
+	try:
+		print("\n***********************************\nTrying to open: {}\n***********************************\n".format(fileName))
+		open("./call_logs/"+fileName,"r")
+		print("{} Detected already. Please choose next action".format(fileName))
+	except:
+		print("File: {} Does Not Exist. It will be created".format(fileName)) 
 	genFiles()
 	print("\n\n*******************************************************************************************")
 	print("*************************** TYPE Y or YES to LOG A CALL ***********************************")
