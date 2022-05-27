@@ -1,5 +1,5 @@
 from time import *
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, date
 from random import randint
 
 def pirntAbout():
@@ -306,7 +306,10 @@ def ecc():
 #main entry point to the script
 def main():
 	#do something
-	fileName = input("\nEnter file name for logging: ")
+	date_for_file = date.today()
+	fileName = "calls_{}.txt".format(date_for_file.strftime("%m%d%Y"))
+	print("\n\n{}\n\n".format(fileName))
+	#fileName = input("\nEnter file name for logging: ")
 	#print(len(fileName))
 	genFiles()
 	print("\n\n*******************************************************************************************")
