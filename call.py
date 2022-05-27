@@ -153,7 +153,9 @@ def getStats():
 def writeFile(arrIn, fileName):
 	writeSuccessful = True 
 	#fileExtension=".txt"
-	#fileName=fileName+fileExtension
+	#lenFileName = len(fileName)
+	#if(lenFileName <4 or fileName[lenFileName-4:lenFileName]!=".txt"):
+		#fileName=fileName+fileExtension
 	#File path for work computer***************************************************************
 
 	file_directory = "./call_logs/"
@@ -301,20 +303,45 @@ def ecc():
 	else:
 		print("no call to end...")
 
+def fileCreator():
+	fileName = input("Hit Enter/Return for default file name: ") 
+	fileExtension=".txt"
+	lenFileName = len(fileName)
+	if(lenFileName>0):
+		if(lenFileName<4 or fileName[lenFileName-4:lenFileName]!=".txt"):
+			fileName=fileName+fileExtension
+			print(".txt Added -- HIT")
+			print("LEN: {}".format(lenFileName))
+		else:
+			fileName="default"+fileExtension
+
+	if(len(fileName)==0):
+		date_for_file = date.today()
+		fileName = "calls_{}"+fileExtension
+		fileName=fileName.format(date_for_file.strftime("%m%d%Y"))	
+	try:
+		print("\n***********************************\nTrying to open: {}\n***********************************\n".format(fileName))
+		open("./call_logs/"+fileName,"r")
+		print("{} Detected already. Please choose next action".format(fileName))
+		print("1. Open\n2. Overwrite")
+		ans = input("input decision: ")
+		ans = ans.strip().lower()
+		if(ans == "1" or ans =="1." or ans=="open" or ans=="1.open" or ans =="1. open"):
+			print("READING FROM FILE!")
+		elif(ans=="2" or ans =="2." or ans == "overwrite" or ans =="2.overwrite" or ans =="2. overwrite"):
+			print("\nOVERWRITING FILE - I HOPE THERE WASN\'t ANYTHING IMPORTANT!!!\n")
+		else:
+			print("\nDO YOU KNOW WHAT YOU ARE DOING???? REDO!\n")
+			fileCreator()
+	except:
+		print("File: {} Does Not Exist. It will be created".format(fileName))
+	return fileName
 
 
 #main entry point to the script
 def main():
 	#do something
-	date_for_file = date.today()
-	fileName = "calls_{}.txt".format(date_for_file.strftime("%m%d%Y"))	
-	#fileName = input("\nEnter file name for logging: ")
-	try:
-		print("\n***********************************\nTrying to open: {}\n***********************************\n".format(fileName))
-		open("./call_logs/"+fileName,"r")
-		print("{} Detected already. Please choose next action".format(fileName))
-	except:
-		print("File: {} Does Not Exist. It will be created".format(fileName)) 
+	fileName = fileCreator() 
 	genFiles()
 	print("\n\n*******************************************************************************************")
 	print("*************************** TYPE Y or YES to LOG A CALL ***********************************")
