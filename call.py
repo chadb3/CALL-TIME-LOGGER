@@ -152,8 +152,8 @@ def getStats():
 #if file exists open?
 def writeFile(arrIn, fileName):
 	writeSuccessful = True 
-	fileExtension=".txt"
-	fileName=fileName+fileExtension
+	#fileExtension=".txt"
+	#fileName=fileName+fileExtension
 	#File path for work computer***************************************************************
 
 	file_directory = "./call_logs/"
