@@ -1,3 +1,4 @@
+import os
 from time import *
 from datetime import timedelta, datetime, date
 from random import randint
@@ -303,15 +304,41 @@ def ecc():
 	else:
 		print("no call to end...")
 
+def openFile(fileName):
+	global listOfCalls
+	global callCount
+	filepath = "./call_logs/"
+	print("attempting to read from: {}".format(fileName))
+	print("STARTING FILE READING")
+	file_openFile = open(filepath+fileName,"r")
+	txt = file_openFile.read()
+	lines=txt.split("\n")
+	item = []
+	for line in lines:
+		#print(line)
+		if(line!=''):
+			listOfCalls.append(line)
+			item.append(line.strip().split("\t"))
+			callCount+=1
+		#print("next line")
+	for i in item:
+		print(i)#a
+	#print(len(item))
+	#still need a way to update the call_delta
+	
+#need to try to do some work getting the unimportant function calls out of the try except block
+#it makes it difficult as it doesn't give any error, and continues like there was no conflict at all.
+#still need to finish reading the calls in.
 def fileCreator():
-	fileName = input("Hit Enter/Return for default file name: ") 
+	fileSize = 0
+	fileName = input("\nHit Enter/Return for default file name: ") 
 	fileExtension=".txt"
 	lenFileName = len(fileName)
 	if(lenFileName>0):
 		if(lenFileName<4 or fileName[lenFileName-4:lenFileName]!=".txt"):
 			fileName=fileName+fileExtension
-			print(".txt Added -- HIT")
-			print("LEN: {}".format(lenFileName))
+			#print(".txt Added -- HIT")
+			#print("LEN: {}".format(lenFileName))
 		else:
 			fileName="default"+fileExtension
 
@@ -322,19 +349,29 @@ def fileCreator():
 	try:
 		print("\n***********************************\nTrying to open: {}\n***********************************\n".format(fileName))
 		open("./call_logs/"+fileName,"r")
-		print("{} Detected already. Please choose next action".format(fileName))
+		print("{} Detected already. Please choose next action\n".format(fileName))
+		fileSize = os.path.getsize("./call_logs/"+fileName)
+		#print(fileSize)
+		if(fileSize>0):
+			print("File size indicates data is present!\nSize: {} BYTES\n".format(fileSize))
+		else:
+			print("File size indicates no data!\n")
 		print("1. Open\n2. Overwrite")
 		ans = input("input decision: ")
 		ans = ans.strip().lower()
 		if(ans == "1" or ans =="1." or ans=="open" or ans=="1.open" or ans =="1. open"):
-			print("READING FROM FILE!")
+			#print("READING FROM FILE!")
+			openFile(fileName)
 		elif(ans=="2" or ans =="2." or ans == "overwrite" or ans =="2.overwrite" or ans =="2. overwrite"):
-			print("\nOVERWRITING FILE - I HOPE THERE WASN\'t ANYTHING IMPORTANT!!!\n")
+			print("\nOVERWRITING FILE - I HOPE THERE WASN\'T ANYTHING IMPORTANT!!!\n")
+			writeFile(listOfCalls, fileName)
+			print("FILE OVERWRITTEN!")
 		else:
 			print("\nDO YOU KNOW WHAT YOU ARE DOING???? REDO!\n")
 			fileCreator()
 	except:
-		print("File: {} Does Not Exist. It will be created".format(fileName))
+		printStr = "\nFile: \"{}\" Created!\n".format(fileName)
+		print(printStr)
 	return fileName
 
 
