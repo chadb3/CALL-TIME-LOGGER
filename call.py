@@ -42,15 +42,11 @@ commandsPrint = ["*Commands to dealing with output*", "\t1. Print", "\t2. CD (cu
 commandList = [commandYes,commandQuit,commandLogging,commandRemove,commandsHelp, commandsPrint]
 
 listOfProducts = ["A", "B", "C", "D", "E", "F", "G"]
-
 listOfProducts.sort()
+
 listOfCalls=[]
 
 callCount=0
-#pulled from file to be added to...
-cumulativeCallCount = 0
-#***********************************
-
 
 callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
 
@@ -101,7 +97,6 @@ def boom():
 	print("\n"*10)
 	return True
 
-
 #function for getting the current delta
 #Otherwise you would need get a call to see the delta.
 #Sometimes it is nice to know how long it has been since the last call...
@@ -120,8 +115,6 @@ def currentDelta():
 		print("\n\t* Current Delta: {} (H:mm:ss) *\n".format(time_sub_string))
 	return True
 
-
-
 #logs the total calls
 def logStats(txtIn):
 	file_directory = "./call_logs/"
@@ -131,23 +124,6 @@ def logStats(txtIn):
 	fileWriter.write(txtIn+"\n")
 	fileWriter.close()
 	return 1
-
-# Gets the running call total
-# *********** MARKED FOR REMOVAL ***********
-def getStats():
-	global cumulativeCallCount
-	file_directory = "./call_logs/"
-	logFileName = "0callHistory.txt"
-	fullPath = file_directory+logFileName
-	fileReader = open(fullPath,'r')
-	z=fileReader.readline()
-	cumulativeCallCount = int(z)
-	fileReader.close()
-	#print(z)
-	return 1
-
-
-
 
 #write to file for logging 
 def writeFile(arrIn, fileName):
@@ -224,9 +200,7 @@ def newCall():
 	callTime = ""
 	eccCalled = False
 	return True
-	
-	
-	
+		
 #defines how to print to console for viewing pleasure!	
 def printToConsole():
 	print("\n")
@@ -363,7 +337,6 @@ def fileCreator():
 		print(printStr)
 	return fileName
 
-
 #main entry point to the script
 def main():
 	#do something
@@ -452,9 +425,6 @@ def main():
 			clean_str_val = " ".join(str_val.split())
 			if(len(clean_str_val)>0):
 				logStats("[ "+str(datetime.now())+" ]  "+call_str_current+clean_str_val)
-
-			
-
 
 if __name__ == "__main__":
 	main()
