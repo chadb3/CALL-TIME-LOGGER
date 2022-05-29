@@ -310,8 +310,8 @@ def openFile(fileName):
 	global time_current_call
 	global time_previous_call
 	filepath = "./call_logs/"
-	print("attempting to read from: {}".format(fileName))
-	print("STARTING FILE READING")
+	print("\nattempting to read from: {}".format(fileName))
+	print("\nSTARTING FILE READING")
 	file_openFile = open(filepath+fileName,"r")
 	txt = file_openFile.read()
 	lines=txt.split("\n")
@@ -319,20 +319,18 @@ def openFile(fileName):
 	for line in lines:
 		#print(line)
 		if(line!=''):
+			print(line)
 			listOfCalls.append(line)
 			item.append(line.strip().split("\t"))
 			callCount+=1
 		#print("next line")
-	for i in item:
-		print(i)#a
+	#for i in item:
+		#print(i)#a
 	time_current_call = time()
 	time_previous_call = time()
 	#print(len(item))
 	#still need a way to update the call_delta
 	
-#need to try to do some work getting the unimportant function calls out of the try except block
-#it makes it difficult as it doesn't give any error, and continues like there was no conflict at all.
-#still need to finish reading the calls in.
 def fileCreator():
 	fileSize = 0
 	fileName = input("\nHit Enter/Return for default file name: ") 
@@ -357,9 +355,10 @@ def fileCreator():
 		fileSize = os.path.getsize("./call_logs/"+fileName)
 		#print(fileSize)
 		if(fileSize>0):
-			print("File size indicates data is present!\nSize: {} BYTES\n".format(fileSize))
+			print("File size indicates *** DATA IS PRESENT! ***\nSize: {} BYTES\n".format(fileSize))
 		else:
-			print("File size indicates no data!\n")
+			print("File size indicates *** NO DATA! ***\n")
+		print("CHOOSE AN OPTION:")
 		print("1. Open\n2. Overwrite")
 		ans = input("input decision: ")
 		ans = ans.strip().lower()
@@ -374,6 +373,7 @@ def fileCreator():
 			print("\nDO YOU KNOW WHAT YOU ARE DOING???? REDO!\n")
 			fileCreator()
 	except:
+		writeFile(listOfCalls, fileName)
 		printStr = "\nFile: \"{}\" Created!\n".format(fileName)
 		print(printStr)
 	return fileName
