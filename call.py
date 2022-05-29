@@ -118,7 +118,6 @@ def currentDelta():
 		local_time_string = str(timedelta(seconds=c))
 		time_sub_string=local_time_string[:7]
 		print("\n\t* Current Delta: {} (H:mm:ss) *\n".format(time_sub_string))
-	
 	return True
 
 
@@ -134,6 +133,7 @@ def logStats(txtIn):
 	return 1
 
 # Gets the running call total
+# *********** MARKED FOR REMOVAL ***********
 def getStats():
 	global cumulativeCallCount
 	file_directory = "./call_logs/"
@@ -150,13 +150,8 @@ def getStats():
 
 
 #write to file for logging 
-#if file exists open?
 def writeFile(arrIn, fileName):
 	writeSuccessful = True 
-	#fileExtension=".txt"
-	#lenFileName = len(fileName)
-	#if(lenFileName <4 or fileName[lenFileName-4:lenFileName]!=".txt"):
-		#fileName=fileName+fileExtension
 	#File path for work computer***************************************************************
 
 	file_directory = "./call_logs/"
@@ -164,7 +159,7 @@ def writeFile(arrIn, fileName):
 
 	fullPath = file_directory+fileName
 	fileWriter = open(fullPath,'w')
-	#do something
+	#does something
 	for call in arrIn:
 		fileWriter.write(call+"\n")
 		
@@ -239,7 +234,6 @@ def printToConsole():
 		print(call)
 	print("\n")
 	return True
-	#Somebody do something
 	
 def removeCall(callNumber_2_remove):
 	#callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
@@ -311,25 +305,19 @@ def openFile(fileName):
 	global time_previous_call
 	filepath = "./call_logs/"
 	print("\nattempting to read from: {}".format(fileName))
-	print("\nSTARTING FILE READING")
+	print("\nSTARTING FILE READING\n")
 	file_openFile = open(filepath+fileName,"r")
 	txt = file_openFile.read()
 	lines=txt.split("\n")
 	item = []
 	for line in lines:
-		#print(line)
 		if(line!=''):
 			print(line)
 			listOfCalls.append(line)
 			item.append(line.strip().split("\t"))
 			callCount+=1
-		#print("next line")
-	#for i in item:
-		#print(i)#a
 	time_current_call = time()
 	time_previous_call = time()
-	#print(len(item))
-	#still need a way to update the call_delta
 	
 def fileCreator():
 	fileSize = 0
@@ -339,8 +327,6 @@ def fileCreator():
 	if(lenFileName>0):
 		if(lenFileName<4 or fileName[lenFileName-4:lenFileName]!=".txt"):
 			fileName=fileName+fileExtension
-			#print(".txt Added -- HIT")
-			#print("LEN: {}".format(lenFileName))
 		else:
 			fileName="default"+fileExtension
 
@@ -353,7 +339,6 @@ def fileCreator():
 		open("./call_logs/"+fileName,"r")
 		print("{} Detected already. Please choose next action\n".format(fileName))
 		fileSize = os.path.getsize("./call_logs/"+fileName)
-		#print(fileSize)
 		if(fileSize>0):
 			print("File size indicates *** DATA IS PRESENT! ***\nSize: {} BYTES\n".format(fileSize))
 		else:
@@ -473,13 +458,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-	
-	
-	
-#Notes for refactor 
-# use split on the user input so I can have options right away input[0] = COMMAND input[1] = OPTION 
-# for fun have a class that has all of the stored strings LOL
-# make a CALL object for the calls.
-# make a container for the CALLS
-	#This will be for removing calls such that I can easily renumber the calls
-	#This will also allow for "other modifications" more easily.
