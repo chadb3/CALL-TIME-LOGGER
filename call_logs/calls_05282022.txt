@@ -1,5 +1,0 @@
-	Call#: 1	Call Time: 03:38:07	Call Date: 05/28/22	 Time Since Previous Call: 0:00:00 (H:mm:ss)	
-	Call#: 2	Call Time: 03:38:11	Call Date: 05/28/22	 Time Since Previous Call: 0:00:04 (H:mm:ss)	
-	Call#: 3	Call Time: 03:38:11	Call Date: 05/28/22	 Time Since Previous Call: 0:00:00 (H:mm:ss)	
-	Call#: 4	Call Time: 03:38:12	Call Date: 05/28/22	 Time Since Previous Call: 0:00:00 (H:mm:ss)	
-	Call#: 5	Call Time: 05:07:52	Call Date: 05/28/22	 Time Since Previous Call: 0:00:04 (H:mm:ss)	

@@ -296,17 +296,19 @@ def ecc():
 	global time_previous_call
 	global eccCalled
 	if(callCount >=1 and eccCalled == False):
-	    print("\n*** Ended Call ***")
-	    time_previous_call = time()
-	    print("Call Duration: {}\n".format(str(timedelta(seconds=time_previous_call-time_current_call))[:7]))
-	    time_current_call = time()
-	    eccCalled = True
+		print("\n*** Ended Call ***")
+		time_previous_call=time()
+		print("Call Duration: {}\n".format(str(timedelta(seconds=time_previous_call-time_current_call))[:7]))
+		time_current_call = time()
+		eccCalled = True
 	else:
 		print("no call to end...")
 
 def openFile(fileName):
 	global listOfCalls
 	global callCount
+	global time_current_call
+	global time_previous_call
 	filepath = "./call_logs/"
 	print("attempting to read from: {}".format(fileName))
 	print("STARTING FILE READING")
@@ -323,6 +325,8 @@ def openFile(fileName):
 		#print("next line")
 	for i in item:
 		print(i)#a
+	time_current_call = time()
+	time_previous_call = time()
 	#print(len(item))
 	#still need a way to update the call_delta
 	
