@@ -295,43 +295,55 @@ def openFile(fileName):
 	
 def fileCreator():
 	fileSize = 0
-	fileName = input("\nHit Enter/Return for default file name: ") 
+	fileName = input("\nHit \"ENTER\" for DEFAULT File Name: ")
+	logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: FILENAME INPUT = \"{}\" ".format(fileName))	
 	fileExtension=".txt"
 	lenFileName = len(fileName)
 	if(lenFileName>0):
 		if(lenFileName<4 or fileName[lenFileName-4:lenFileName]!=".txt"):
 			fileName=fileName+fileExtension
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CUSTOM FILENAME: \".txt\" ADDED! ")
 		else:
-			fileName="default"+fileExtension
-
+			fileName=fileName
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator CUSTOM FILENAME: \".txt\" DETECTED (NOT ADDED)! ")
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CUSTOM FILENAME: "+fileName)	
 	if(len(fileName)==0):
 		date_for_file = date.today()
 		fileName = "calls_{}"+fileExtension
-		fileName=fileName.format(date_for_file.strftime("%m%d%Y"))	
+		fileName=fileName.format(date_for_file.strftime("%m%d%Y"))
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: DEFAULT FILENAME chosen (empty string): "+fileName)	
 	try:
 		print("\n***********************************\nTrying to open: {}\n***********************************\n".format(fileName))
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: TRYING TO DETERMINE IF \"{}\" ALREADY EXISTS!".format(fileName))
 		open("./call_logs/"+fileName,"r")
 		print("{} Detected already. Please choose next action\n".format(fileName))
 		fileSize = os.path.getsize("./call_logs/"+fileName)
 		if(fileSize>0):
 			print("File size indicates *** DATA IS PRESENT! ***\nSize: {} BYTES\n".format(fileSize))
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: \"{}\" DETECTED: {} BYTES!".format(fileName,fileSize))	
 		else:
 			print("File size indicates *** NO DATA! ***\n")
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: {} DETECTED, BUT NO DATA PRESENT!"+fileName)	
 		print("CHOOSE AN OPTION:")
 		print("1. Open\n2. Overwrite")
 		ans = input("input decision: ")
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: \"OPEN or OVERWRITE\" INPUT = \"{}\" ".format(ans))	
 		ans = ans.strip().lower()
 		if(ans == "1" or ans =="1." or ans=="open" or ans=="1.open" or ans =="1. open"):
 			#print("READING FROM FILE!")
 			openFile(fileName)
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: OPEN FILE CHOSEN!")	
 		elif(ans=="2" or ans =="2." or ans == "overwrite" or ans =="2.overwrite" or ans =="2. overwrite"):
+			logStats("[ "+str(datetime.now())+" ]  "+"filecreator: OVERWRITE FILE CHOSEN!")	
 			print("\nOVERWRITING FILE - I HOPE THERE WASN\'T ANYTHING IMPORTANT!!!\n")
 			writeFile(listOfCalls, fileName)
 			print("FILE OVERWRITTEN!")
 		else:
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: REDO! (BAD USER INPUT!)")	
 			print("\nDO YOU KNOW WHAT YOU ARE DOING???? REDO!\n")
 			fileCreator()
 	except:
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CREATING FILE \"{}\"! (AKA FILE NOT FOUND!)".format(fileName))	
 		writeFile(listOfCalls, fileName)
 		printStr = "\nFile: \"{}\" Created!\n".format(fileName)
 		print(printStr)
