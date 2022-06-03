@@ -68,6 +68,8 @@ username = ""
 
 eccCalled = False
 
+continueSession = False
+
 # Generate files if they don't already exists
 # the log file 
 def genFiles():
@@ -90,7 +92,6 @@ def manual(strCommandIn):
 	a = strCommandIn.split()
 	if(len(a)==1):
 		print("\n* Type: man <command> *\n")
-	
 	return True
 
 def boom():
@@ -158,18 +159,22 @@ def newCall():
 	global time_previous_call
 	global time_delta
 	global eccCalled
+	global continueSession
 	callCount+=1
 	#sets the time for the first call (only to be used once the second call happens)
 	if(callCount==1):
 		time_current_call = time()
-		
 	#setting up the values for the delta
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
-	elif(callCount>1 and eccCalled == False):
-		time_previous_call = time_current_call
-		time_current_call = time()
+	elif(callCount>1 and eccCalled == False and continueSession == False):
+		ecc()
+		#time_previous_call = time_current_call
+		#time_current_call = time()
 		#compute time delta
 		time_delta = time_current_call - time_previous_call
+	elif(continueSession == True):
+		time_delta = time_current_call - time_current_call
+		continueSession = False
 	else:
 		time_current_call = time()
 		time_delta = time_current_call - time_previous_call
@@ -277,6 +282,8 @@ def openFile(fileName):
 	global callCount
 	global time_current_call
 	global time_previous_call
+	global continueSession
+	continueSession = True
 	filepath = "./call_logs/"
 	print("\nattempting to read from: {}".format(fileName))
 	print("\nSTARTING FILE READING\n")
@@ -429,7 +436,7 @@ def main():
 						call_str_current = call_str_2.format(callCount)
 					else:
 						call_str_current = call_str_1
-		elif(str_lower == "ecc" or str_lower == "epc"):
+		elif(str_lower.strip() == "ecc" or str_lower.strip() == "epc"):
 			ecc()
 			call_str_current = call_str_1
 			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
