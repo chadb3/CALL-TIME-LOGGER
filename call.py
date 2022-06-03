@@ -168,6 +168,7 @@ def newCall():
 	#only enters if call count is more than 1 as with 0 calls it is a 0 delta 
 	elif(callCount>1 and eccCalled == False and continueSession == False):
 		ecc()
+		#IN ecc(), time_previous_call & time_current_call are set!
 		#time_previous_call = time_current_call
 		#time_current_call = time()
 		#compute time delta
@@ -178,11 +179,7 @@ def newCall():
 	else:
 		time_current_call = time()
 		time_delta = time_current_call - time_previous_call
-		
-		
-#need debug strings in above i am still getting odd behavior when testing "calls" where i did not get a chance to epc it. the epc doesn't match the cd (current  delta).		
-#Above is incorrect. This appears to work fine. The bug is in currentDelta  	
-	
+			
 	#set up the call time
 	callTime = strftime("%X")
 	
