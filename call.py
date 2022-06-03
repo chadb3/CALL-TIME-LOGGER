@@ -302,16 +302,16 @@ def fileCreator():
 	if(lenFileName>0):
 		if(lenFileName<4 or fileName[lenFileName-4:lenFileName]!=".txt"):
 			fileName=fileName+fileExtension
-			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CUSTOM FILENAME: \".txt\" ADDED! ")
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator - CUSTOM FILENAME: \".txt\" ADDED! ")
 		else:
 			fileName=fileName
-			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator CUSTOM FILENAME: \".txt\" DETECTED (NOT ADDED)! ")
-		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CUSTOM FILENAME: "+fileName)	
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator - CUSTOM FILENAME: \".txt\" DETECTED (WILL NOT ADDED)! ")
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator - CUSTOM FILENAME: "+fileName)	
 	if(len(fileName)==0):
 		date_for_file = date.today()
 		fileName = "calls_{}"+fileExtension
 		fileName=fileName.format(date_for_file.strftime("%m%d%Y"))
-		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: DEFAULT FILENAME chosen (empty string): "+fileName)	
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator - DEFAULT FILENAME chosen (empty string): "+fileName)	
 	try:
 		print("\n***********************************\nTrying to open: {}\n***********************************\n".format(fileName))
 		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: TRYING TO DETERMINE IF \"{}\" ALREADY EXISTS!".format(fileName))
@@ -343,7 +343,7 @@ def fileCreator():
 			print("\nDO YOU KNOW WHAT YOU ARE DOING???? REDO!\n")
 			fileCreator()
 	except:
-		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CREATING FILE \"{}\"! (AKA FILE NOT FOUND!)".format(fileName))	
+		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CREATING FILE \"{}\"! (AKA FILE DID NOT EXIST!)".format(fileName))	
 		writeFile(listOfCalls, fileName)
 		printStr = "\nFile: \"{}\" Created!\n".format(fileName)
 		print(printStr)
@@ -429,7 +429,7 @@ def main():
 						call_str_current = call_str_2.format(callCount)
 					else:
 						call_str_current = call_str_1
-		elif(str_lower[0:3] == "ecc" or str_lower[0:3] == "epc"):
+		elif(str_lower == "ecc" or str_lower == "epc"):
 			ecc()
 			call_str_current = call_str_1
 			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
