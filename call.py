@@ -74,6 +74,7 @@ continueSession = False
 # the log file 
 def genFiles():
 	logFileName = "0callHistory.txt"
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists! ".format(logFileName))
 	file_directory = "./call_logs/"	
 	FFF = file_directory + logFileName
 	try:
