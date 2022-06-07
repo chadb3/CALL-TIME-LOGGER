@@ -49,7 +49,7 @@ listOfCalls=[]
 callCount=0
 
 callText = "\tCall#: {}\tCall Time: {}\tCall Date: {}\t Time Since Previous Call: {} (H:mm:ss)\t"
-
+callTextLog = "Call#: {} Call Time: {}  Call Date: {}  Time Since Previous Call: {} (H:mm:ss) "
 callDate = ""
 
 callTime = ""
@@ -74,18 +74,20 @@ continueSession = False
 # the log file 
 def genFiles():
 	logFileName = "0callHistory.txt"
-	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists! ".format(logFileName))
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists!".format(logFileName))
 	file_directory = "./call_logs/"	
 	FFF = file_directory + logFileName
 	try:
 		a=open(FFF,'r')
 		a.close()
 		print("\nLog File: \"{}\" Exists\n\t".format(logFileName))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: {} Exists!".format(logFileName))
 		return 1
 	except: 
 		a=open(FFF,'w')
 		a.close()
 		print("\n\tLog-file: \"{}\" was created in the following dir: \"{}\"\n\t".format(logFileName,file_directory))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: {} Created!".format(logFileName))
 		return 0
 	return True
 
@@ -97,6 +99,7 @@ def manual(strCommandIn):
 
 def boom():
 	print("\n"*10)
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: 10 Lines Printed To Console!")
 	return True
 
 #function for getting the current delta
@@ -111,10 +114,12 @@ def currentDelta():
 	#if b == 0 then there wasn't a previous call... (aka no calls at all)
 	if(b==0):
 		print("\n\t*** NO DELTA ***\t\n")
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: \"*** NO DELTA ***\" Printed to Console! ")
 	else:
 		local_time_string = str(timedelta(seconds=c))
 		time_sub_string=local_time_string[:7]
 		print("\n\t* Current Delta: {} (H:mm:ss) *\n".format(time_sub_string))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: \"* Current Delta: {} (H:mm:ss) *\" Printed to Console! ".format(time_sub_string))
 	return True
 
 #logs the total calls
@@ -131,7 +136,6 @@ def logStats(txtIn):
 def writeFile(arrIn, fileName):
 	writeSuccessful = True 
 	#File path for work computer***************************************************************
-
 	file_directory = "./call_logs/"
 	#**************************************************************************************
 
@@ -145,6 +149,9 @@ def writeFile(arrIn, fileName):
 	fileWriter.close()
 	if(writeSuccessful == False):
 		print("\n\t{} Write Failed! COMPLETE SYSTEM FAILURE!".format(fileName))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Write To File Failed!")
+	else:
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Write to File Successful! ")
 	return writeSuccessful
 #Defines a new call
 #When called, it will create a new call
@@ -194,10 +201,10 @@ def newCall():
 	time_sub_string=local_time_string[:7]
 	#sets the string of the call. (LOCAL VAR)
 	newCalltxt =(callText.format(callCount, callTime, callDate, time_sub_string))
-	
+	newCalltxtLog=(callTextLog.format(callCount, callTime, callDate, time_sub_string))
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: New Call Registered! - \"{} \"".format(newCalltxtLog))
 	#adds the call to the list
 	listOfCalls.append(newCalltxt)
-	
 	#sets the call and date back to "" not sure if needed, but it makes me feel better
 	callDate = ""
 	callTime = ""
@@ -251,11 +258,13 @@ def removeCall(callNumber_2_remove):
 		#updates the list of calls without the removed call, now no need to manually renumber.
 		listOfCalls = tempListOfCalls
 		print("\n\tRemoved call {} successfully (before renumber)\n".format(callNumber_2_remove))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Removed Call - {} -- Call Count: {}!".format(callNumber_2_remove,callCount))
 		localBool = False
 		time_current_call = time()
 		time_previous_call = time()
 	else:
-		print("\n\tCall {} NOT FOUND\n".format(callNumber_2_remove)) 
+		print("\n\tCall {} NOT FOUND\n".format(callNumber_2_remove))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Attempt To Remove A Call Failed!")
 	return False
 	#do something 
 
@@ -270,12 +279,14 @@ def ecc():
 		print("\n*** Ended Call ***")
 		time_previous_call=time()
 		print("Call Duration: {}\n".format(str(timedelta(seconds=time_previous_call-time_current_call))[:7]))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: End Call - Duration: {} !".format(str(timedelta(seconds=time_previous_call-time_current_call))[:7]))
 		time_current_call = time()
 		eccCalled = True
 	else:
 		print("no call to end...")
 
 def openFile(fileName):
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: openFile called filename: {}".format(fileName))
 	global listOfCalls
 	global callCount
 	global time_current_call
@@ -336,16 +347,16 @@ def fileCreator():
 		ans = ans.strip().lower()
 		if(ans == "1" or ans =="1." or ans=="open" or ans=="1.open" or ans =="1. open"):
 			#print("READING FROM FILE!")
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: OPEN FILE CHOSEN!")
 			openFile(fileName)
-			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: OPEN FILE CHOSEN!")	
 		elif(ans=="2" or ans =="2." or ans == "overwrite" or ans =="2.overwrite" or ans =="2. overwrite"):
 			logStats("[ "+str(datetime.now())+" ]  "+"filecreator: OVERWRITE FILE CHOSEN!")	
 			print("\nOVERWRITING FILE - I HOPE THERE WASN\'T ANYTHING IMPORTANT!!!\n")
 			writeFile(listOfCalls, fileName)
 			print("FILE OVERWRITTEN!")
 		else:
-			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: REDO! (BAD USER INPUT!)")	
 			print("\nDO YOU KNOW WHAT YOU ARE DOING???? REDO!\n")
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: REDO! (BAD USER INPUT!)")	
 			fileCreator()
 	except:
 		logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: CREATING FILE \"{}\"! (AKA FILE DID NOT EXIST!)".format(fileName))	
