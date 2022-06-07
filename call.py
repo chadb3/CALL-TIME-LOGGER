@@ -409,6 +409,7 @@ def main():
 				sleep(2.5)
 			break
 		elif(str_lower=='help' or str_lower=='list' or str_lower =='ls'):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
 			#print("\n***COMMANDS***\n1. Yes - yes, a log new call\n2. Exit - quits \n3. Quit - quits\n4. Write -writes to file\n5. Help - Help?\n6. Remove - remove call at index (not yet implemented)\n7. rm - remove call at index (not yet implemented)\n8. ls - help?")
 			print(" ")
 			for group in commandList:
