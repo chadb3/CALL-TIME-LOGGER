@@ -447,9 +447,9 @@ def main():
 					else:
 						call_str_current = call_str_1
 		elif(str_lower.strip() == "ecc" or str_lower.strip() == "epc"):
-			ecc()
-			call_str_current = call_str_1
 			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
+			ecc()
+			call_str_current = call_str_1	
 		else:
 			clean_str_val = " ".join(str_val.split())
 			if(len(clean_str_val)>0):
