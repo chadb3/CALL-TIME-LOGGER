@@ -6,25 +6,34 @@ Once the times are logged you can compute when it is likely to be the busiest
 ## Installation
 
 This project does not currently require running any install scripts and the only requirement is python3
-simply run it by clicking on it, or "py call.py" or "python3 call.py" ("python call.py" might work on newer linux distros)
+simply run it by clicking on it, or "py call.py" or "python3 call.py" ("python call.py" might work on newer Linux distros)
 
 ## How to use call.py
 
-Once you click on it it you will be prompted for a filename.
+The first thing you will see should be the following:
 
-it (01File_Reader_Final.py), expects the following format
+"Log-file: "0callHistory.txt" was created in the following dir: "./call_logs/""
+
+this file will log all of your commands, most command responses,and general inputs into from call.py. I Use it for notes, so I can go back and review at a later date.
+
+Next, you will be given the following prompt:
+
+"Hit "ENTER" for DEFAULT File Name:"
+
+If you hit ENTER it will automatically generate the file with the current date.
+
+However you can enter a custom filename, but "01File_Reader_Final.py" expects the following format. You may need to use this if you need to restart the program, but the day has changed, and need to reload the "previous days" file.
 
 **calls_ddmmyyyy**
 
-(ddmmyyyy example: 01012023) 
-You do not need to include a file extension (it will make a file called calls_ddmmyyyy.txt). 
-you can have it create the file immediately by typing "write" (after you input the "calls_ddmmyyyy"
+(ddmmyyyy example: 01012023)
 
-There are other included python projects need the above format.
+You do not need to include a file extension, but you include the ".txt" it will not add it again. 
+
+It will then automatically create the file, but you can also manually write the to the file by typing "write".
 
 The created files will write to the call_logs file.
 
-You will likely see a reference to a "log file" this is for a feature that logs each line to a separate file for review like this "history" command in Powershell and linux shell (when on a call I would sometimes use my program for note taking, and it would have been helpful to save that info). You can now review the History file by reviwing "0callHistory.txt" in call_logs. Each line you type (when running call.py) will log to the file as long as it is not just an empty line. 
 
 To log the call time simply type: "y" and hit the enter, or the return key. You must do this manually each time. Each log will rewrite to the file.
 
@@ -32,6 +41,20 @@ to can end a call with the "ecc" or "epc" command
 
 To properly exit, type "exit", and press enter or the return key. If you did not type "write", and didn't log any times, it will not create a file.
 
+You will be given the following prompt if a file already exists:
+
+calls_xxxxxxxx.txt Detected already. Please choose next action
+
+File size indicates *** DATA IS PRESENT! ***
+Size: __ BYTES
+
+CHOOSE AN OPTION:
+1. Open
+2. Overwrite
+input decision: 
+
+1. If you choose open. it will open and attempt to continue off from where it left off.
+2. Overwrite. It will overwrite the file.
 
 ## How to use 01File_Reader_Final.py
 This is in the call_logs file.

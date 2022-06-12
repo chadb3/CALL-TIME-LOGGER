@@ -74,21 +74,27 @@ continueSession = False
 # the log file 
 def genFiles():
 	logFileName = "0callHistory.txt"
-	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists!".format(logFileName))
+	#logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists!".format(logFileName))
 	file_directory = "./call_logs/"	
 	FFF = file_directory + logFileName
+	#logFileString = ""
 	try:
 		a=open(FFF,'r')
 		a.close()
 		print("\nLog File: \"{}\" Exists\n\t".format(logFileName))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists!".format(logFileName))
 		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: {} Exists!".format(logFileName))
+		#logFileString="[ "+str(datetime.now())+" ]  "+"SYSTEM: {} Exists!".format(logFileName)
 		return 1
 	except: 
 		a=open(FFF,'w')
 		a.close()
-		print("\n\tLog-file: \"{}\" was created in the following dir: \"{}\"\n\t".format(logFileName,file_directory))
+		print("\nLog-file: \"{}\" was created in the following dir: \"{}\"\n\t".format(logFileName,file_directory))
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Checking to see if {} exists!".format(logFileName))
 		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: {} Created!".format(logFileName))
+		#logFileString="[ "+str(datetime.now())+" ]  "+"SYSTEM: {} Created!".format(logFileName)
 		return 0
+	logStats(logFileString)
 	return True
 
 def manual(strCommandIn):
@@ -368,8 +374,8 @@ def fileCreator():
 #main entry point to the script
 def main():
 	#do something
-	fileName = fileCreator() 
 	genFiles()
+	fileName = fileCreator() 
 	print("\n\n*******************************************************************************************")
 	print("*************************** TYPE Y or YES to LOG A CALL ***********************************")
 	print("*******************************************************************************************")
