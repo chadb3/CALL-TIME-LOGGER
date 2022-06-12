@@ -28,7 +28,7 @@ However you can enter a custom filename, but "01File_Reader_Final.py" expects th
 
 (ddmmyyyy example: 01012023)
 
-You do not need to include a file extension, but you include the ".txt" it will not add it again. 
+You do not need to include a file extension, but if you include the ".txt" it will not add it again. 
 
 It will then automatically create the file, but you can also manually write the to the file by typing "write".
 
