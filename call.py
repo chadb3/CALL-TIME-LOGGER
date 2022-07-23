@@ -82,7 +82,9 @@ def translatePhone(phoneNumberIn):
 	# debug
 	# print(len(phoneNumberIn))
 	# boolean value to see if it required translation or not.
-	# used for logging if a phone number was \"translated\" or not. If it was translated, it will print the translated phone number. Otherwise it will indicate that a translation wasn't required.
+	# used for logging if a phone number was \"translated\" or not. 
+	#If it was translated, it will print the translated phone number. 
+	#Otherwise it say "No translation required!"
 	reqTranslation = False
 	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Translating Phonewords!")
 	for i in range(0,len(phoneNumberIn)):
