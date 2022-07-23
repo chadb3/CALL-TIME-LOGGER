@@ -74,24 +74,38 @@ continueSession = False
 #Start of phone (de-)formatter
 #Note: This from my "https://github.com/chadb3/Phone-Number-Formatter"
 def translatePhone(phoneNumberIn):
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Phone number in: {}".format(phoneNumberIn))
 	#stores the updated phone number
 	retPhoneStr = ""
 	#Dictionary that holds each letter and its associated number for example pdict["A"]=2 and pdict["Z"]=9 
 	pdict = {"A":2,"B":2,"C":2,"D":3,"E":3,"F":3,"G":4,"H":4,"I":4,"J":5,"K":5,"L":5,"M":6,"N":6,"O":6,"P":7,"Q":7,"R":7,"S":7,"T":8,"U":8,"V":8,"W":9,"X":9,"Y":9,"Z":9}
-	#debug
-	#print(len(phoneNumberIn))
+	# debug
+	# print(len(phoneNumberIn))
+	# boolean value to see if it required translation or not.
+	# used for logging if a phone number was \"translated\" or not. If it was translated, it will print the translated phone number. Otherwise it will indicate that a translation wasn't required.
+	reqTranslation = False
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Translating Phonewords!")
 	for i in range(0,len(phoneNumberIn)):
 		try:
 			#If possible, it converts the letter to number.
 			retPhoneStr+=str(pdict[phoneNumberIn[i].upper()])
+			reqTranslation = True
 		except:
 			#otherwise it just adds it to the string.
 			retPhoneStr+=phoneNumberIn[i]
+	#used for logging information
+	if(reqTranslation):
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Phone number translated: {}".format(retPhoneStr))
+	else:
+		logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: No translation required!")
+	#Set this value back to false here...
+	reqTranslation = False
 	nullPhone(retPhoneStr)
 # Takes in a "Phone Number"
 def nullPhone(phoneNumberIn):
+	newPhone = ""
 	# Prints the phone number in the before state
-	print("Before: {}".format(phoneNumberIn))
+	print("\nBefore: {}".format(phoneNumberIn))
 
 	# Debug Length from before regex
 	# print(len(phoneNumberIn))
@@ -100,7 +114,9 @@ def nullPhone(phoneNumberIn):
 	newPhone = re.sub(r"\D", "", phoneNumberIn)
 	# prints only the digits (0-9)
 	# in other words, anything that wasn't a digit is destroyed.
-	print("\nAfter: "+newPhone)
+	print("\nAfter: {}\n".format(newPhone))
+	logStats("[ "+str(datetime.now())+" ]  "+"SYSTEM: Phone number formatted: {}".format(newPhone))
+	newPhone = ""
 #**** END of Phone (de-)formatter
 # Generate files if they don't already exists
 # the log file 
@@ -482,7 +498,10 @@ def main():
 		elif(str_lower.strip() == "ecc" or str_lower.strip() == "epc"):
 			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)	
 			ecc()
-			call_str_current = call_str_1	
+			call_str_current = call_str_1
+		elif(str_lower=="/phone"):
+			logStats("[ "+str(datetime.now())+" ]  "+"Command: "+str_val)
+			translatePhone(input("\nEnter Phone Number: "))	
 		else:
 			clean_str_val = " ".join(str_val.split())
 			if(len(clean_str_val)>0):
