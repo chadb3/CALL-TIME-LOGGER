@@ -1,0 +1,36 @@
+[ 2022-07-23 02:28:09.979057 ]  SYSTEM: Checking to see if 0callHistory.txt exists!
+[ 2022-07-23 02:28:09.979271 ]  SYSTEM: 0callHistory.txt Created!
+[ 2022-07-23 02:28:19.405812 ]  fileCreator: FILENAME INPUT = "____del" 
+[ 2022-07-23 02:28:19.406015 ]  fileCreator - CUSTOM FILENAME: ".txt" ADDED! 
+[ 2022-07-23 02:28:19.406058 ]  fileCreator - CUSTOM FILENAME: ____del.txt
+[ 2022-07-23 02:28:19.406117 ]  fileCreator: TRYING TO DETERMINE IF "____del.txt" ALREADY EXISTS!
+[ 2022-07-23 02:28:19.406163 ]  fileCreator: CREATING FILE "____del.txt"! (AKA FILE DID NOT EXIST!)
+[ 2022-07-23 02:28:19.406267 ]  SYSTEM: Write to File Successful! 
+[ 2022-07-23 02:28:19.406324 ]  SESSION START - ____del.txt
+[ 2022-07-23 02:28:22.422633 ]  Command: y
+[ 2022-07-23 02:28:22.422764 ]  SYSTEM: New Call Registered! - "Call#: 1 Call Time: 02:28:22  Call Date: 07/23/22  Time Since Previous Call: 0:00:00 (H:mm:ss)  "
+[ 2022-07-23 02:28:22.422899 ]  SYSTEM: Write to File Successful! 
+[ 2022-07-23 02:28:27.086319 ]  Command: /phone
+[ 2022-07-23 02:28:44.758366 ]  SYSTEM: Phone number in: 555-EAT-FOOD
+[ 2022-07-23 02:28:44.758479 ]  SYSTEM: Translating Phonewords!
+[ 2022-07-23 02:28:44.758516 ]  SYSTEM: Phone number translated: 555-328-3663
+[ 2022-07-23 02:28:44.758707 ]  SYSTEM: Phone number formatted: 5553283663
+[ 2022-07-23 02:28:47.822330 ]  Command: epc
+[ 2022-07-23 02:28:47.822457 ]  SYSTEM: End Call - Duration: 0:00:25 !
+[ 2022-07-23 02:28:51.974331 ]  Command: y
+[ 2022-07-23 02:28:51.974454 ]  SYSTEM: New Call Registered! - "Call#: 2 Call Time: 02:28:51  Call Date: 07/23/22  Time Since Previous Call: 0:00:04 (H:mm:ss)  "
+[ 2022-07-23 02:28:51.974906 ]  SYSTEM: Write to File Successful! 
+[ 2022-07-23 02:28:55.414528 ]  Command: /phone
+[ 2022-07-23 02:29:03.702996 ]  SYSTEM: Phone number in: 555-EAT-F00D
+[ 2022-07-23 02:29:03.703095 ]  SYSTEM: Translating Phonewords!
+[ 2022-07-23 02:29:03.703143 ]  SYSTEM: Phone number translated: 555-328-3003
+[ 2022-07-23 02:29:03.703190 ]  SYSTEM: Phone number formatted: 5553283003
+[ 2022-07-23 02:29:17.903009 ]  Command: epc
+[ 2022-07-23 02:29:17.903136 ]  SYSTEM: End Call - Duration: 0:00:25 !
+[ 2022-07-23 02:29:50.391701 ]  Command: /phone
+[ 2022-07-23 02:30:04.200950 ]  SYSTEM: Phone number in: 555-RAT-RAIN
+[ 2022-07-23 02:30:04.201064 ]  SYSTEM: Translating Phonewords!
+[ 2022-07-23 02:30:04.201106 ]  SYSTEM: Phone number translated: 555-728-7246
+[ 2022-07-23 02:30:04.201155 ]  SYSTEM: Phone number formatted: 5557287246
+[ 2022-07-23 02:34:27.531874 ]  Command: exit
+[ 2022-07-23 02:34:27.531988 ]  SESSION END - Normal Exit :)
