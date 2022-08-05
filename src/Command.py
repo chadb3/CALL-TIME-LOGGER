@@ -1,3 +1,8 @@
+import os
+from datetime import *
+#from datetime import timedelta, datetime, date
+from random import randint
+import re
 # proof of concept
 #a=True
 #i = 0
@@ -15,14 +20,17 @@ class Command:
 		this.option=""
 		this.other=""
 		this.commands = []
-		this._TEST1()
+		#this._TEST1()
 	def listOfCommands(this):
 		for command in this.commands:
 			print(command)
 	def addCommand(this, command):
 		this.commands.append(command)
-	def _TEST1(this):
+	def zAppendCommandTest(this):
 		this.commands.append("TEST 1")
 		this.commands.append("TEST 2")
 		this.commands.append("TEST 3")
-
+	def _getDateTime(this):
+		return datetime.now()
+	def zDateTimeTest(this):
+		return this._getDateTime()
