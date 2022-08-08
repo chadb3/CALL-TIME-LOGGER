@@ -22,7 +22,7 @@ Next, you will be given the following prompt:
 
 If you hit ENTER it will automatically generate the file with the current date.
 
-However you can enter a custom filename, but "01File_Reader_Final.py" expects the following format. You may need to use this if you need to restart the program, but the day has changed, and need to reload the "previous days" file.
+However, you can enter a custom filename, but "01File_Reader_Final.py" expects the format listed below. You may need to use this if you need to restart the program, but the day has changed, and need to reload the "previous days" file.
 
 **calls_ddmmyyyy**
 
