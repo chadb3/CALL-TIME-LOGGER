@@ -28,3 +28,9 @@ class Call:
     #used to test if start and endtimes are working correctly
     def zTestPrintCallStartAndEndTime(this):
         print("start: {}\nend: {}".format(this.callTime,this.callEndTime))
+    #This is for adjusting the end time of a call
+    #Just in case the user forgets to manually end the call time. 
+    #WIP
+    def adjustEndTime(this):
+        ans = input("Estimated Time: ")
+        return 0
