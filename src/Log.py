@@ -23,6 +23,7 @@ class Log:
         return 0
     def _startLogging(this, dateTimeIn):
         #datetime - SESSION START - this.filename
+        this._writeToFile(this.sessionStartStr.format(dateTimeIn,this.filename))
         return 0
     def endLogging(this, dateTimeIn):
         #datetime - SESSION END - :)
