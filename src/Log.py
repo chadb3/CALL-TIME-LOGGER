@@ -1,4 +1,5 @@
 from random import randint
+import datetime
 class Log:
     def __init__(this):
         #filepath to history file
@@ -12,6 +13,7 @@ class Log:
         this.systemStr = "{} - SYSTEM: {}"
         #datetime INPUT: "user input that wasn't a command or other."
         this.userInputStr = "{} - INPUT: {}"
+        this._startLogging(datetime.datetime.now())
     def logCommand(this, dateTimeIn, commandIn):
         this._writeToFile(this.commandStr.format(dateTimeIn, commandIn))
         return 0
