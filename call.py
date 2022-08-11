@@ -390,7 +390,7 @@ def fileCreator():
 			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: \"{}\" DETECTED: {} BYTES!".format(fileName,fileSize))	
 		else:
 			print("File size indicates *** NO DATA! ***\n")
-			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: {} DETECTED, BUT NO DATA PRESENT!"+fileName)	
+			logStats("[ "+str(datetime.now())+" ]  "+"fileCreator: {} DETECTED, BUT NO DATA PRESENT!".format(fileName))	
 		print("CHOOSE AN OPTION:")
 		print("1. Open\n2. Overwrite")
 		ans = input("input decision: ")
