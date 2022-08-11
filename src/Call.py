@@ -1,12 +1,13 @@
 from datetime import *
 
 class Call:
-    def __int__(this):
+    def __init__(this, callNumber=-1):
         #this.callDate = ""
         this.callTime = ""
         this.callEndTime=""
         #this.callEndDate=""
-        this.callNumber = ""
+        this.callNumber = callNumber
+        this.setStartTime()
     # sets the call start time
     # note: also sets the end time.
     # set the end time to the start time
@@ -34,3 +35,15 @@ class Call:
     def adjustEndTime(this):
         ans = input("Estimated Time: ")
         return 0
+    # used to ajust call number. To increse callNumber by 1.
+    def increaseCallNum(this):
+        if(this.callNumber>0):
+           this.callNumber+=1
+        else:
+           print("set call number")
+    # used to adjust call number. To decrease callNumber by 1.
+    def decreaseCallNum(this):
+        if(this.callNumber>1):
+           this.callNumber-=1
+        else:
+           print("call number < 1")
