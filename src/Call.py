@@ -1,4 +1,4 @@
-from datetime import *
+from datetime import datetime, timedelta
 
 class Call:
     def __init__(this, callNumber=-1):
@@ -33,7 +33,12 @@ class Call:
     #Just in case the user forgets to manually end the call time. 
     #WIP
     def adjustEndTime(this):
-        ans = input("Estimated Time: ")
+        try:
+         ans = int(input("Estimated Time (in seconds): "))
+        except:
+         print("Error: cannot convert to numbers\nTry Again!")
+         ans=0
+        this.callEndTime=this.callEndTime-timedelta(seconds=ans)
         return 0
     # used to ajust call number. To increse callNumber by 1.
     def increaseCallNum(this):

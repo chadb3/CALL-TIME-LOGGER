@@ -13,6 +13,11 @@ import re
 #  a=False
 # print(n)
 # end of proof of concept
+# Notes: commands for "call"
+# Y - new call
+# yes - new call
+# new call - new call
+#:
 class Command:
 	def __init__(this):
 		this.line=""
@@ -34,3 +39,6 @@ class Command:
 		return datetime.now()
 	def zDateTimeTest(this):
 		return this._getDateTime()
+	def printHelp(this, command):
+		print("Getting help for {}")
+		return 0
