@@ -19,26 +19,28 @@ import re
 # new call - new call
 #:
 class Command:
-	def __init__(this):
-		this.line=""
-		this.command=""
-		this.option=""
-		this.other=""
-		this.commands = []
-		#this._TEST1()
-	def listOfCommands(this):
-		for command in this.commands:
-			print(command)
-	def addCommand(this, command):
-		this.commands.append(command)
-	def zAppendCommandTest(this):
-		this.commands.append("TEST 1")
-		this.commands.append("TEST 2")
-		this.commands.append("TEST 3")
-	def _getDateTime(this):
-		return datetime.now()
-	def zDateTimeTest(this):
-		return this._getDateTime()
-	def printHelp(this, command):
-		print("Getting help for {}")
-		return 0
+	def __init__(this,command="",command_type="",command_options=[],command_help=""):
+		this.command=command
+		# System - internal command called automatically or part of commands below. (not including logging that is)
+		# Command - command from user input
+		# None-User input
+		this.command_type=command_type
+		this.command_options=command_options
+		this.command_help=command_help
+	# All of the below works, but I am going in a different direction now.
+	#def listOfCommands(this):
+		#for command in this.commands:
+			#print(command)
+	#def addCommand(this, command):
+		#this.commands.append(command)
+	#def zAppendCommandTest(this):
+		#this.commands.append("TEST 1")
+		#this.commands.append("TEST 2")
+		#this.commands.append("TEST 3")
+	#def _getDateTime(this):
+		#return datetime.now()
+	#def zDateTimeTest(this):
+		#return this._getDateTime()
+	#def printHelp(this, command):
+		#print("Getting help for {}")
+		#return 0
