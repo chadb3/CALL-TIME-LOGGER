@@ -18,15 +18,25 @@ import re
 # yes - new call
 # new call - new call
 #:
+# XML notes: import xml.etree.ElementTree as ET
 class Command:
-	def __init__(this,command="",command_type="",command_options=[],command_help=""):
-		this.command=command
+	def __init__(this,command="",command_type="",command_options=[],command_alias=[],command_help=""):
+		this._command=command
 		# System - internal command called automatically or part of commands below. (not including logging that is)
 		# Command - command from user input
 		# None-User input
-		this.command_type=command_type
-		this.command_options=command_options
-		this.command_help=command_help
+		this._command_type=command_type
+		this._command_options=command_options
+		this._command_alias=command_alias
+		this._command_help=command_help
+	def getCommand(this):
+		return this._command
+	def getCommandType(this):
+		return this_.command_type
+	def getCommandOptions(this):
+		return this._command_options
+	def getCommandHelp(this):
+		return this._command_help
 	# All of the below works, but I am going in a different direction now.
 	#def listOfCommands(this):
 		#for command in this.commands:
