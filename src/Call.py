@@ -54,6 +54,8 @@ class Call:
            print("call number < 1")
     def printEndTime(this):
         print("End Time: {}".format(str(this._callEndTime)[0:8]))
+    def getTimes(this):
+        return [this._callNumber,this._callTime,this._callEndTime]
     def __str__(this):
         if(this._callTime==this._callEndTime):
             return " Call: {}     Date: {}     Time: {}     Duration: 0     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8])
