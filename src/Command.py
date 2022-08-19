@@ -22,4 +22,12 @@ class Command:
 		return this._command_options
 	def getCommandHelp(this):
 		return this._command_help
+	def run(this, input):
+		try:
+			return this._command[input]
+		except:
+			try:
+				return this._command_alias[input]
+			except:
+				print("No Command")
 
