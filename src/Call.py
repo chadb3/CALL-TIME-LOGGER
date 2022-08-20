@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 class Call:
     def __init__(this, callNumber=-1):
         #this.callDate = ""
+        this.callEnded=False
         this._callTime = ""
         this._callEndTime=""
         #this.callEndDate=""
@@ -22,6 +23,7 @@ class Call:
     # sets the end time.
     def setEndTime(this):
         this._callEndTime=datetime.now()
+        this.callEnded=True
     # used to see if it prints the correct call number
     # also used to test to see if call numbers hold if added to a list 
     def zTestPrintCallNum(this):
@@ -67,4 +69,6 @@ class Call:
         else:
             return " Call: {}     Date: {}     Start Time: {}     End Time: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8])
     # also need to return the values so to compute time from last call.
-    
+    def currentDelta(this):
+        #place holder
+        print("Time - Time")
