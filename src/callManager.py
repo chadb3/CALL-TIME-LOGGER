@@ -15,3 +15,8 @@ class callManager:
     def printCalls(this):
         for call in this.callList:
             print(call)
+    def askDuration(this):
+        print("asking current delta/Duration")
+        lenList=len(this.callList)
+        if(lenList>0):
+            this.callList[lenList-1].currentDelta()

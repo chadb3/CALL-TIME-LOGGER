@@ -71,4 +71,6 @@ class Call:
     # also need to return the values so to compute time from last call.
     def currentDelta(this):
         #place holder
-        print("Time - Time")
+        if(not this.callEnded):
+            print("Duration of Call {}:: {}".format(this._callNumber,str(datetime.now()-this._callTime)))
+        print("")
