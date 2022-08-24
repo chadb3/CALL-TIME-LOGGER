@@ -30,3 +30,7 @@ class callManager:
         if(len(this.callList)==1):
             #print("LEN=1")
             print("Time to First: {}".format(str(this.timeFirstCall-this.initTime)[0:7]))
+    def removeCall(this, callNumber):
+        print("REMOVING CALL PLACE-HOLDER")
+    def adjustTimeOfCall(this,callNumber,timeIN):
+        print("Adjusting time of Call: {}".format(callNumber))
