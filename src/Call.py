@@ -74,3 +74,6 @@ class Call:
         if(not this.callEnded):
             print("Duration of Call {}:: {}".format(this._callNumber,str(datetime.now()-this._callTime)))
         print("")
+    def getCallNumber(this):
+        retVal=this._callNumber
+        return retVal
