@@ -59,7 +59,7 @@ class Call:
     def getTimes(this):
         return [this._callNumber,this._callTime,this._callEndTime]
     def __str__(this):
-        if(this._callTime==this._callEndTime):
+        if(this._callTime==this._callEndTime): #feature idea: maybe try to have a more simple output of just the time unless the date is different than the start time then add a * to the end of the time...
             return " Call: {}     Date: {}     Time: {}     Duration: 0     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8])
         else:
             return " Call: {}     Date: {}     Time: {}     Duration: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime-this._callTime)[0:7])

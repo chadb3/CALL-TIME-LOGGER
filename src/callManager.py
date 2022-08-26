@@ -21,7 +21,7 @@ class callManager:
         for call in this.callList:
             print(call)
     def endCurrentCall(this):
-        if(len(this.CallList)>0):
+        if(len(this.callList)>0):
             print("Ending Call")
         else:
             print("No Calls to End")
@@ -40,10 +40,11 @@ class callManager:
         numCalls=len(this.callList)
         if(numCalls>0):
             this.callList.remove(this.callList[callNumber-1])
+            this.callCount-=1
             for i in range(0,len(this.callList)):
-                print(i) #WIP renumbering
-                #if(this.callList[i].getCallNumber>this.callList[i]-1):
-                    #this.callList[i].decreaseCallNum()
+                print(i)
+                this.callList[i].setCallNumber(i+1)
+                print(this.callList[i])
         else:
             print("NO CALLS TO REMOVE")
     def adjustTimeOfCall(this,callNumber,timeIN):
