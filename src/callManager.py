@@ -23,6 +23,7 @@ class callManager:
     def endCurrentCall(this):
         if(len(this.callList)>0):
             print("Ending Call")
+            this.callList[len(this.callList)-1].setEndTime()
         else:
             print("No Calls to End")
     def askDuration(this):
