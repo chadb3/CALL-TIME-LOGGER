@@ -30,4 +30,7 @@ class Command:
 				return this._command_alias[input]
 			except:
 				print("No Command")
+	# reads commands from src for testing
+	def readCOMMANDSTEST(this):
+		print("Starting Reading Commands: ")
 

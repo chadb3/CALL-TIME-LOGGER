@@ -1,0 +1,4 @@
+# callManager
+"y":newCall()
+"yes":newCall()
+"epc":endCurrentCall()
