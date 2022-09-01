@@ -26,6 +26,7 @@ class callManager:
     #"Ends" current call - sets the end time for the call. 
     def endCurrentCall(this):
         if(len(this.callList)>0):
+            #print("DEBUG: CALLED!")
             this.callList[len(this.callList)-1].setEndTime()
         else:
             print("No Calls to End")
@@ -71,3 +72,14 @@ class callManager:
     # trying to figure out a way to create commands programmatically
     def commandBuilder(this):
         print("Building Commands for phoneNumberManager")
+    # assumed to be int.
+    # not for users
+    def commandAPItest(this, index):
+        index=int(index)
+        #print(index)
+        commands=[this.newCall,this.endCurrentCall,this.printCalls]
+        #commands2={1:this.newCall(),2:this.endCurrentCall(),3:this.printCalls()}
+        commands[index]()
+        #print("sdf")
+        #commands2[index]
+        #this.printCallCount()
