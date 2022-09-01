@@ -6,9 +6,11 @@ class test:
         this.cc = controler
     def testManagerAPI(this):
         this.cc.commandAPItest(0)
+        this.cc.commandAPItest(2)
         sleep(5)
         this.cc.commandAPItest(1)
         this.cc.commandAPItest(0)
+        this.cc.commandAPItest(2)
         sleep(5)
         this.cc.commandAPItest(1)
         this.cc.commandAPItest(2)
