@@ -1,4 +1,4 @@
-from src.Call import *
+from src.Call import Call
 from datetime import datetime
 
 class callManager:
