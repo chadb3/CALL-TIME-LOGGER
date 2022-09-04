@@ -1,4 +1,5 @@
 # callManager
-"y":newCall()
-"yes":newCall()
-"epc":endCurrentCall()
+"y":newCall
+"yes":newCall
+"epc":endCurrentCall
+"cd":askDuration

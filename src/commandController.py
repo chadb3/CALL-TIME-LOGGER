@@ -16,3 +16,11 @@ class commandController:
             tmpStorage.append(line.strip())
         for command in tmpStorage:
             print(command)
+    def printCommandHelp(this, command):
+        #may need to adjust
+        for ccommand in this.commands:
+            ccommand.getCommandHelp()
+    def printCommandList(this)
+        print("Printing Commands: ")
+        for command in commands:
+            print(command)
