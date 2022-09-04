@@ -74,10 +74,11 @@ class callManager:
         print("Building Commands for phoneNumberManager")
     # assumed to be int.
     # not for users
-    def commandAPItest(this, index):
+    # item and other are used for functions with input
+    def commandAPItest(this, index, item=0,other=0):
         index=int(index)
         #print(index)
-        commands=[this.newCall,this.endCurrentCall,this.printCalls]
+        commands=[this.newCall,this.endCurrentCall,this.printCalls,this.askDuration,this.getTimeToFirstCall]
         #commands2={1:this.newCall(),2:this.endCurrentCall(),3:this.printCalls()}
         commands[index]()
         #print("sdf")
