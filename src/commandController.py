@@ -20,7 +20,7 @@ class commandController:
         #may need to adjust
         for ccommand in this.commands:
             ccommand.getCommandHelp()
-    def printCommandList(this)
+    def printCommandList(this):
         print("Printing Commands: ")
-        for command in commands:
+        for command in this.commands:
             print(command)

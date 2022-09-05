@@ -1,7 +1,9 @@
-from src import *
+from src.callManager import *
+from src.commandController import *
 from time import sleep
-
 def main():
+    callM=callManager()
+    COMMAND=commandController()
     print("STARTING")
     true=True
     while(true):
