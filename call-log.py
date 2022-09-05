@@ -2,6 +2,7 @@ from src.callManager import *
 from src.commandController import *
 from time import sleep
 def main():
+    filepath="/config/commands.txt"
     callM=callManager()
     COMMAND=commandController()
     print("STARTING")
