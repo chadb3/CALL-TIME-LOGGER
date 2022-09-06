@@ -15,10 +15,13 @@ class commandController:
         for line in file:
             #print(line, end="")
             if(line[0]!='#'):
-                this.testStorage.append(line.strip())
+                this.testStorage.append(Command(line.strip()))
         print("Printing Commands")
         for command in this.testStorage:
-            print(command)
+            command.printCommand()
+    def printTESTCOMMANDS(this):
+        for command in this.testStorage:
+            command.printCommand()
     def printCommandHelp(this, command):
         #may need to adjust
         for ccommand in this.commands:

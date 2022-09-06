@@ -1,1 +1,5 @@
-# call/callController
+# callManager
+"y":newCall
+"yes":newCall
+"epc":endCurrentCall
+"cd":askDuration

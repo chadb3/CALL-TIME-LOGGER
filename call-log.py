@@ -9,7 +9,9 @@ def main():
     true=True
     while(true):
         usrInput=input("call-logger>> ")
-        0
+        usrInput=usrInput.upper()
+        if(usrInput=="EXIT" or usrInput=="EXIT()"):
+            break
     return 0
 
 if __name__ == "__main__":
