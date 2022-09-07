@@ -22,8 +22,13 @@ class Call:
         this._callNumber = numberIn
     # sets the end time.
     def setEndTime(this):
-        this._callEndTime=datetime.now()
-        this.callEnded=True
+        if(not this.callEnded):
+            this._callEndTime=datetime.now()
+            this.callEnded=True
+            return True
+        else:
+            print("Call already ended")
+            return False
     # used to see if it prints the correct call number
     # also used to test to see if call numbers hold if added to a list 
     def zTestPrintCallNum(this):

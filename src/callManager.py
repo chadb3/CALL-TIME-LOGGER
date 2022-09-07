@@ -27,6 +27,7 @@ class callManager:
     def endCurrentCall(this):
         if(len(this.callList)>0):
             #print("DEBUG: CALLED!")
+            # need way to get if already ended so that it doesn't print again.
             this.callList[len(this.callList)-1].setEndTime()
         else:
             print("No Calls to End")
