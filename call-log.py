@@ -1,6 +1,7 @@
 from src.callManager import *
 from src.commandController import *
 from time import sleep
+import sqlite3
 def main():
     filepath="/config/commands.txt"
     callM=callManager()
@@ -16,10 +17,13 @@ def main():
             callM.newCall()
             callM.printCalls()
         elif(usrInput=="EPC" or usrInput=="ECC"):
-            callM.endCurrentCall()
-            callM.printCalls()
+            #callM.endCurrentCall()
+            if(callM.endCurrentCall()):
+                callM.printCalls()
         elif(usrInput=="DURATION"):
             callM.askDuration()
+        elif(usrInput=="PRINT"):
+            callM.printCalls()
     return 0
 
 if __name__ == "__main__":
