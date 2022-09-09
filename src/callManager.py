@@ -64,8 +64,9 @@ class callManager:
         print("Adjusting time of Call: {}".format(callNumber))
     # prints the list of the calls with the end times rather than the durations
     def printCallsAlternate(this):
+        print("Alternate entered")
         for call in this.callList:
-            call.print_alternate()
+            print(call.print_alternate())
     # prints the call count.
     def printCallCount(this):
         print(len(this.callList))

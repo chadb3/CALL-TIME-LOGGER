@@ -63,14 +63,14 @@ class Call:
         print("End Time: {}".format(str(this._callEndTime)[0:8]))
     def getTimes(this):
         return [this._callNumber,this._callTime,this._callEndTime]
-    def __str__(this):
+    def __str__(this): # if(datetime.now - this._callTime> 1.5 seconds)
         if(this._callTime==this._callEndTime): #feature idea: maybe try to have a more simple output of just the time unless the date is different than the start time then add a * to the end of the time...
             return " Call: {}     Date: {}     Time: {}     Duration: 0     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8])
         else:
             return " Call: {}     Date: {}     Time: {}     Duration: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime-this._callTime)[0:7])
     def print_alternate(this):
         if(this._callTime==this._callEndTime):
-            return " Call: {}     Date: {}     Start Time: {}     End Time: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8])
+            return " Call: {}     Date: {}     Start Time: {}     ONGOING     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8])
         else:
             return " Call: {}     Date: {}     Start Time: {}     End Time: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8])
     # also need to return the values so to compute time from last call.

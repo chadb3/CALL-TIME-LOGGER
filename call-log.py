@@ -24,7 +24,15 @@ def main():
             callM.askDuration()
         elif(usrInput=="PRINT"):
             callM.printCalls()
+        elif(usrInput=="PRINT 2"):
+            print("CALLED")
+            callM.printCallsAlternate()
     return 0
 
 if __name__ == "__main__":
 	main()
+
+# currently working on
+# make duration not print 0 while call is current.
+# -see notes under Call.py
+# add database
