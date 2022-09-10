@@ -70,9 +70,10 @@ class Call:
             return " Call: {}     Date: {}     Time: {}     Duration: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime-this._callTime)[0:7])
     def print_alternate(this):
         if(this._callTime==this._callEndTime):
-            return " Call: {}     Date: {}     Start Time: {}     ONGOING     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8])
+            return (" Call: {}     Date: {}     Start Time: {}     ONGOING     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8]))
         else:
-            return " Call: {}     Date: {}     Start Time: {}     End Time: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8])
+            #print("ALT PRINT ELSE HIT")# trying to find where extra space is coming from.
+            return (" Call: {}     Date: {}     Start Time: {}     End Time: {}     ".format(this._callNumber,this._callTime.date(),str(this._callTime.time())[0:8],str(this._callEndTime.time())[0:8]))
     # also need to return the values so to compute time from last call.
     def currentDelta(this):
         #place holder

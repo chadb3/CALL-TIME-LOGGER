@@ -25,7 +25,7 @@ def main():
         elif(usrInput=="PRINT"):
             callM.printCalls()
         elif(usrInput=="PRINT 2"):
-            print("CALLED")
+            #print("CALLED")
             callM.printCallsAlternate()
     return 0
 
