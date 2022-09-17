@@ -17,7 +17,9 @@ def main():
             #easter egg
             if(ran==1001 or ran==2001 or ran==3001 or ran==4001 or ran==5001 or ran==6001 or ran==7001 or ran==8001 or ran==9001 or ran==10001):
                 print("Bye\n:^)")
-            print(ran)
+                print(ran)
+            else:
+                print("EXITING")
             break
         elif(usrInput=="Y" or usrInput=="NEW CALL" or usrInput =="YES"):
             callM.newCall()
