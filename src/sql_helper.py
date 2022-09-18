@@ -6,7 +6,7 @@ DB=["CALL","COMPANY","LOGS"]
 class callTimeDB:
     def __init__(this):
         this.DB="data/callDB.sqlite3"
-        this.MODE="?mode=rw"
+        #this.MODE="?mode=rw" under review if needed also ,uri=True
         this.TABLES=["CALL","COMPANY","LOGS"]
         None
     def INSERT_CALL(this, call_IN):
