@@ -9,6 +9,7 @@ class callManager:
         this.timeFirstCall=0
         this.callList = []
         this.callCount = 0
+        this.database=callTimeDB()
     # add a new call to the list
     def newCall(this):
         if(this.callCount>0):
@@ -18,6 +19,7 @@ class callManager:
                 this.callList[this.callCount-1].setEndTime()
         this.callCount+=1
         this.callList.append(Call(this.callCount))
+        this.database.INSERT_CALL(this.callList[-1])#NEED TO CHANGE
         if(len(this.callList)==1 and this.timeFirstCall==0):
             this.timeFirstCall=datetime.now()
     # prints the list of calls

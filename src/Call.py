@@ -12,6 +12,8 @@ class Call:
     # sets the call start time
     # note: also sets the end time.
     # set the end time to the start time
+    def getValues(this):
+        return [this._callNumber,this._callTime.time(),this._callTime.date(),this._callEndTime.time(),this._callEndTime.date()]
     def setStartTime(this):
         # need to split out
         #this.callDate = datetime.now()
