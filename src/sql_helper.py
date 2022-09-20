@@ -31,10 +31,18 @@ class callTimeDB:
         sqlConnection.close()
         None
     def SELECT_CALL(this, call_ID_IN):
+        sqlConnection=sqlite3.connect(this.DB)
+        sqlConnection.close()
         None
     def UPDATE_END_TIME(this,call_in):
+        sqlConnection=sqlite3.connect(this.DB)
+        sqlConnection.close()
         None
     def REMOVE_CALL(this, call_ID_IN):
+        sqlConnection=sqlite3.connect(this.DB)
+        sqlConnection.close()
         None
     def testing_select_call(this,testCallIn):
+        ssqlConnection=sqlite3.connect(this.DB)
+        sqlConnection.close()
         None
