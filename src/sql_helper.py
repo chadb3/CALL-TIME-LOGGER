@@ -32,10 +32,15 @@ class callTimeDB:
         None
     def SELECT_CALL(this, call_ID_IN):
         sqlConnection=sqlite3.connect(this.DB)
+        sqlCursor=sqlConnection.execute("SELECT CALL WHERE CALL_ID ={}".format(call_ID_IN))
+        sqlConnection.commit()
         sqlConnection.close()
         None
-    def UPDATE_END_TIME(this,call_in):
+    def UPDATE_END_TIME(this,call_id,call_IN):
         sqlConnection=sqlite3.connect(this.DB)
+        ins=call_IN.getValues()
+        sqlCursor=sqlConnection.execute("UPDATE CALL SET CALL_TIME_END={},CALL_DATE_END={} WHERE CALL_ID={}".format(ins[3],ins[4],call_id))
+        sqlConnection.commit()
         sqlConnection.close()
         None
     def REMOVE_CALL(this, call_ID_IN):
@@ -43,6 +48,6 @@ class callTimeDB:
         sqlConnection.close()
         None
     def testing_select_call(this,testCallIn):
-        ssqlConnection=sqlite3.connect(this.DB)
+        sqlConnection=sqlite3.connect(this.DB)
         sqlConnection.close()
         None
