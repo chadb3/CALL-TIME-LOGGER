@@ -47,6 +47,18 @@ class callTimeDB:
         sqlConnection=sqlite3.connect(this.DB)
         sqlConnection.close()
         None
+    def SELECT_LAST_CALL_ID(this):
+        sqlConnection=sqlite3.connect(this.DB)
+        sqlCursor=sqlConnection.execute("SELECT CALL_NUM FROM CALL ORDER BY CALL_NUM DESC LIMIT 1")
+        try:
+            ret=sqlCursor.fetchone()
+            sqlCursor.close()
+            return ret
+        except Exception as ex:
+            sqlCursor.close()
+            print(ex)
+            return None
+        sqlConnection.close()
     def testing_select_call(this,testCallIn):
         sqlConnection=sqlite3.connect(this.DB)
         sqlConnection.close()
