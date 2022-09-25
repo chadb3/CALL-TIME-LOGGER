@@ -10,6 +10,13 @@ class callManager:
 		this.callList = []
 		this.callCount = 0
 		this.database=callTimeDB()
+		this.lastCallNum=this.database.SELECT_LAST_CALL_ID()
+		print("PAST HIT")
+		if(this.lastCallNum==None):
+			this.lastCallNum=0
+		else:
+			this.lastCallNum=this.lastCallNum[0]
+		print("INITILIZING LAST CALL: {}".format(this.lastCallNum))
 	# add a new call to the list
 	def newCall(this):
 		if(this.callCount>0):
